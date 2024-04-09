@@ -1,7 +1,6 @@
 import { Tabs } from "antd";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// import { movieSerVice } from "../../../Service/MovieService";
 import MovieTabItem from "./MovieTabItem/MovieTabItem";
 import { MA_NHOM } from "../../../service/urlConfig";
 import { movieSer } from "../../../service/movieSer";
@@ -48,6 +47,10 @@ export default function MovieTabs() {
   };
   return (
     <div className="container mx-auto border">
+      
+      <h1 className="xl:text-4xl md:text-4xl text-3xl text-center text-blue-700 font-bold mb-8 py-3">
+        Lịch chiếu phim
+      </h1>
       <CustomTabs
         tabBarGutter={"5rem"}
         tabBarExtraContent={{
