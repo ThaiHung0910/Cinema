@@ -108,7 +108,7 @@ export default function SpeedBooking() {
     let checkValueLichChieu = selectLichChieu.current.value;
     let checkValueCumRap = selectCumRap.current.value;
     if (checkValueCumRap != 0 && checkValueLichChieu != 0) {
-      navigate(`/bookticket/${checkValueLichChieu}`);
+      navigate(`/book-ticket/${checkValueLichChieu}`);
     } else {
       Swal.fire({
         icon: "error",

@@ -4,17 +4,27 @@ import {
   turnOffLoading,
   turnOnLoading,
 } from '../redux/loadingReducer/loadingSlice';
+import { userLocal } from './userLocal';
 
 export const BASE_URL = 'https://movienew.cybersoft.edu.vn';
+
 export const MA_NHOM = 'GP09';
+
 export const TOKEN_CYBER =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCA2NCIsIkhldEhhblN0cmluZyI6IjA4LzA5LzIwNTQiLCJIZXRIYW5UaW1lIjoiMTgyNTc1MzYwMDAwMCIsIm5iZiI6MTY5NTkyMDQwMCwiZXhwIjoxNzI1OTAxMjAwfQ.XLHg-hNTodOsN6aJbzkEOhntH6Bq2GMv2BTVxwDfqCA';
 
+export const configHeader = () => {
+  return {
+    TokenCybersoft: TOKEN_CYBER,
+    Authorization: 'Bearer ' + userLocal.get()?.accessToken,
+  };
+};
+
+
+
 export const http = axios.create({
   baseURL: BASE_URL,
-  headers: {
-    TokenCybersoft: TOKEN_CYBER,
-  },
+  headers: configHeader(),
 });
 
 // Add a request interceptor

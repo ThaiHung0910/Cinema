@@ -11,7 +11,7 @@ import {
 const CustomTabs = styled(Tabs)`
   .ant-tabs-ink-bar {
     position: absolute;
-    background: #7200ca;
+    background: #3eb4e7;
     pointer-events: none;
   }
 `;

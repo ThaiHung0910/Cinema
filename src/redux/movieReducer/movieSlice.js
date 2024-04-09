@@ -3,7 +3,8 @@ import { getListChairThunk } from './movieThunk';
 
 const initialState = {
     listChair: [],
-    listChairBook: []
+    listChairBook: [],
+    infoMovie: {}
 }
 
 const movieSlice = createSlice({
@@ -17,7 +18,6 @@ const movieSlice = createSlice({
           state.listChairBook.splice(index, 1)
         } else {
           state.listChairBook.push(chair)
-
         }
 
     }
@@ -27,6 +27,7 @@ const movieSlice = createSlice({
         let infoScreenPage = action.payload
         let listChair = infoScreenPage.danhSachGhe.slice(0,100)
         state.listChair = listChair
+        state.infoMovie = infoScreenPage.thongTinPhim;
     })
   }
 });

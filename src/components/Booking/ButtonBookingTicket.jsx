@@ -24,7 +24,7 @@ export default function ButtonBookingTicket(props) {
   let confirmBookTicket = () => {
     if (infoUser) {
       // navigate(`/bookticket/${props.maLichChieu}`);
-      window.location.href = `/bookticket/${props.maLichChieu}`;
+      window.location.href = `/book-ticket/${props.maLichChieu}`;
     } else {
       setCheckLogin(false);
     }
@@ -74,7 +74,7 @@ export default function ButtonBookingTicket(props) {
                   {props.tenPhim}
                 </h1>
                 <p className="text-gray-500 w-max break-normal">
-                  Tác giả: Trần Hoàng Lâm - Đào Công Thành
+                  Tác giả: CInema - Future
                 </p>
                 <p className="text-gray-500 w-max break-normal">
                   Thời lượng phim : 120 phút

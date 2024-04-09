@@ -5,11 +5,12 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import HomeTemplate from "./templates/HomeTemplate";
 import HomePage from "./pages/HomePage/HomePage";
 import DetailPage from "./pages/DetailPage/DetailPage";
-import ScreenPage from "./pages/ScreenPage/ScreenPage";
 import Loading from "./components/Loading/Loading";
 import ButtonToTop from "./components/ButtonToTop/ButtonToTop";
 import RegisterPage from "../src/pages/RegisterPage/RegisterPage";
 import CheckUser from "./HOC/CheckUser";
+import BookTicketPage from "./pages/BookTicketPage/BookTicketPage";
+
 
 function App() {
   return (
@@ -22,10 +23,10 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="detail-movie/:idMovie" element={<DetailPage />} />
           <Route
-            path="screen/:maLichChieu"
+            path="book-ticket/:maLichChieu"
             element={
               <CheckUser>
-                <ScreenPage />
+                <BookTicketPage/>
               </CheckUser>
             }
           />

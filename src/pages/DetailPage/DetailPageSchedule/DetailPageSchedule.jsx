@@ -36,7 +36,7 @@ const DetailPageSchedule = ({ idMovie }) => {
     return dataLichChieuPhim.map((dataLcp, i) => {
       return (
         <NavLink
-          to={`/screen/${dataLcp.maLichChieu}`}
+          to={`/book-ticket/${dataLcp.maLichChieu}`}
           key={i}
           className="border p-2 rounded"
         >

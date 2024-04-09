@@ -28,5 +28,10 @@ export const movieSer = {
   getListChair : (idMovie) => {
     let uri = `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idMovie}`
     return http.get(uri)
-  }
+  },
+  postDataBookingChair: (data) => {
+    let uri = "/api/QuanLyDatVe/DatVe";
+    return http.post(uri, data);
+  },
+
 };
