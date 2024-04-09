@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { movieSer } from '../../service/movieSer';
-import DetailPageSchedule from './DetailPageSchedule';
+import DetailPageSchedule from './DetailPageSchedule/DetailPageSchedule';
 
 const DetailPage = () => {
   // Lấy param idMovie trên url xuống

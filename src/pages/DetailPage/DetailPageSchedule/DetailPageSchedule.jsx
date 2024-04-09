@@ -1,6 +1,6 @@
 import { Tabs } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { movieSer } from '../../service/movieSer';
+import { movieSer } from '../../../service/movieSer';
 import { NavLink } from 'react-router-dom';
 
 const items = [
