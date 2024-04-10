@@ -10,7 +10,8 @@ import ButtonToTop from "./components/ButtonToTop/ButtonToTop";
 import RegisterPage from "../src/pages/RegisterPage/RegisterPage";
 import CheckUser from "./HOC/CheckUser";
 import BookTicketPage from "./pages/BookTicketPage/BookTicketPage";
-
+import AdminTemplate from "./templates/AdminTemplate";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
             path="book-ticket/:maLichChieu"
             element={
               <CheckUser>
-                <BookTicketPage/>
+                <BookTicketPage />
               </CheckUser>
             }
           />
@@ -35,6 +36,10 @@ function App() {
         <Route path="/auth" element={<AuthTemplate />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />}></Route>
+        </Route>
+        {/* admin template */}
+        <Route path="/admin" element={<AdminTemplate />}>
+          <Route path="firms" element={<AdminPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
