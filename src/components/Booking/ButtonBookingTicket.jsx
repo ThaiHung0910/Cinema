@@ -1,9 +1,7 @@
-import { Button, Modal } from "antd";
-// import moment from "moment";
-import React, { useEffect, useState } from "react";
+import {  Modal } from "antd";
+import React, {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { movieSer } from "../../service/movieSer";
 import { backGroundLogin } from "../../assets/img/js/img";
 
 export default function ButtonBookingTicket(props) {
@@ -23,8 +21,7 @@ export default function ButtonBookingTicket(props) {
   };
   let confirmBookTicket = () => {
     if (infoUser) {
-      // navigate(`/bookticket/${props.maLichChieu}`);
-      window.location.href = `/book-ticket/${props.maLichChieu}`;
+      window.location.href = `/screen/${props.maLichChieu}`;
     } else {
       setCheckLogin(false);
     }
@@ -35,11 +32,10 @@ export default function ButtonBookingTicket(props) {
         className="py-3 px-2 mt-2 font-bold text-center border border-blue-700  text-blue-700 hover:text-white hover:bg-blue-500 duration-300 rounded-lg"
         onClick={showModal}
       >
-        {/* {moment(props.ngayChieuGioChieu).format("DD/MM/yy ~ HH:MM")} */}
         { props.ngayChieuGioChieu}
       </button>
       <Modal
-        bodyStyle={{ padding: "35px" }}
+        styles={{ body: { padding: "35px" }, content: { padding: 0 } }}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -54,7 +50,7 @@ export default function ButtonBookingTicket(props) {
             <div className="flex space-x-4 py-8 border-b justify-center">
               <div
                 onClick={() => {
-                  navigate(`/detail/${props.maPhim}`);
+                  navigate(`/detail-movie/${props.maPhim}`);
                 }}
                 className="w-1/4 flex items-center justify-center h-44 overflow-hidden cursor-pointer"
               >
@@ -67,7 +63,7 @@ export default function ButtonBookingTicket(props) {
               <div className="w-3/4 space-y-3">
                 <h1
                   onClick={() => {
-                    navigate(`/detail/${props.maPhim}`);
+                    navigate(`/detail-movie/${props.maPhim}`);
                   }}
                   className="font-bold text-xl cursor-pointer"
                 >

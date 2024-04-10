@@ -56,7 +56,7 @@ export default function SpeedBooking() {
   // CHANGE VALUE PHIM
   let handleChangeValueNameMovie = (e) => {
     let { value } = e.target;
-    if (value != 0) {
+    if (value !== 0) {
       fetchApiShowTime(value);
       setDisable(true);
     }
@@ -89,7 +89,7 @@ export default function SpeedBooking() {
   //RENDER LỊCH CHIẾU
   let renderNgayChieuGioChieu = () => {
     let cumRapUserChon = thongTinTatCaCumRap.find(
-      (cumRap) => cumRap.maCumRap == valueCumRap
+      (cumRap) => cumRap.maCumRap === valueCumRap
     );
     return cumRapUserChon?.lichChieuPhim.map((lichChieu) => {
       return (
@@ -107,8 +107,8 @@ export default function SpeedBooking() {
     // console.log("selectLichChieu.current.value", selectCumRap.current.value);
     let checkValueLichChieu = selectLichChieu.current.value;
     let checkValueCumRap = selectCumRap.current.value;
-    if (checkValueCumRap != 0 && checkValueLichChieu != 0) {
-      navigate(`/book-ticket/${checkValueLichChieu}`);
+    if (checkValueCumRap !== 0 && checkValueLichChieu !== 0) {
+      navigate(`/screen/${checkValueLichChieu}`);
     } else {
       Swal.fire({
         icon: "error",

@@ -10,6 +10,7 @@ import { backGroundLogin } from "../../assets/img/js/img";
 import logo from "../../assets/img/logo.png";
 import { loginThunk } from "../../redux/userReducer/userThunk";
 
+
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -44,9 +45,7 @@ const LoginPage = () => {
     >
       <div
         onClick={() => {
-          setTimeout(() => {
-            navigate("/");
-          }, 1000);
+          navigate("/");
         }}
         className="absolute  top-5 left-5  xl:text-5xl md:text-3xl text-4xl text-blue-300 font-extrabold cursor-pointer opacity-70"
       >

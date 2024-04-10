@@ -1,4 +1,4 @@
-import { http } from './urlConfig';
+import { MA_NHOM, http } from './urlConfig';
 
 export const userSer = {
   postLogin: (data) => {
@@ -7,6 +7,6 @@ export const userSer = {
   },
   postRegister: (data) => {
     let uri = "/api/QuanLyNguoiDung/DangKy";
-    return http.post(uri, data);
+    return http.post(uri, { ...data, maNhom: MA_NHOM });
   },
 };

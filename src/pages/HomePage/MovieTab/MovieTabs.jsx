@@ -5,7 +5,6 @@ import MovieTabItem from "./MovieTabItem/MovieTabItem";
 import { MA_NHOM } from "../../../service/urlConfig";
 import { movieSer } from "../../../service/movieSer";
 
-
 const CustomTabs = styled(Tabs)`
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: #1d4ed8 !important;
@@ -39,15 +38,25 @@ export default function MovieTabs() {
         <Tabs.TabPane
           tab={<img src={heThongRap.logo} className="w-12 h-12" alt="" />}
           key={heThongRap.maHeThongRap}
+          
         >
+
           <MovieTabItem maHeThongRap={heThongRap.maHeThongRap} />
         </Tabs.TabPane>
+        // <Tabs
+        //   items={[
+        //     {
+        //       key: heThongRap.maHeThongRap,
+        //       tab: <img src={heThongRap.logo} className="w-12 h-12" alt="" />,
+        //       content: <MovieTabItem maHeThongRap={heThongRap.maHeThongRap} />,
+        //     },
+        //   ]}
+        // />
       );
     });
   };
   return (
     <div className="container mx-auto border">
-      
       <h1 className="xl:text-4xl md:text-4xl text-3xl text-center text-blue-700 font-bold mb-8 py-3">
         Lịch chiếu phim
       </h1>

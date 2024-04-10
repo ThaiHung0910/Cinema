@@ -9,7 +9,7 @@ export default function MovieTabItemChild(props) {
       <div>
         <h1 className="mb-6">
           <span className="bg-blue-700 text-lg text-white px-1 py-1 rounded-md">
-            C18
+            C17
           </span>
           <span className="text-xl font-medium"> {props.dataPhim.tenPhim}</span>
         </h1>
@@ -45,7 +45,7 @@ export default function MovieTabItemChild(props) {
             />
           </div>
         </div>
-        <div className="col-span-2 ">{renderMovieSchedule()}</div>
+        <div className="col-span-2">{renderMovieSchedule()}</div>
       </div>
     );
   };

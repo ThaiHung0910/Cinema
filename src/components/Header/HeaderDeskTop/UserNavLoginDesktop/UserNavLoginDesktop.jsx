@@ -48,7 +48,7 @@ export default function UserNavLoginDesktop({ infoUser }) {
         closable={false}
         onClose={onClose}
         open={open}
-        styles={{ backgroundColor: "#18191A" }}
+        style={{ backgroundColor: "#18191A" }}
       >
         {/* //Information  */}
         <div className="space-y-1 ">

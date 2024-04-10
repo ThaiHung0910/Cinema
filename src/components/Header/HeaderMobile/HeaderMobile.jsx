@@ -36,7 +36,7 @@ export default function HeaderMobile() {
           }}
           className=" text-blue-700  font-extrabold cursor-pointer text-left"
         >
-          <img src={logo}></img>
+          <img src={logo} alt=""></img>
         </div>
         <div>{renderUserNavMobile}</div>
       </div>

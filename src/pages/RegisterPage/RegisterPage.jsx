@@ -7,10 +7,7 @@ import { backGroundLogin } from "../../assets/img/js/img";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import FormInputCustom from "../../components/Input/FormInputCustom";
-import {
-  turnOffLoading,
-  turnOnLoading,
-} from "../../redux/loadingReducer/loadingSlice";
+
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -89,11 +86,7 @@ const RegisterPage = () => {
     >
       <div
         onClick={() => {
-          dispatch(turnOnLoading());
-          setTimeout(() => {
-            navigate("/");
-            dispatch(turnOffLoading());
-          }, 1000);
+          navigate("/");
         }}
         className="absolute  top-5 left-5  xl:text-5xl md:text-3xl text-4xl text-blue-300 font-extrabold cursor-pointer opacity-70"
       >

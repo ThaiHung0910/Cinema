@@ -9,7 +9,9 @@ import Loading from "./components/Loading/Loading";
 import ButtonToTop from "./components/ButtonToTop/ButtonToTop";
 import RegisterPage from "../src/pages/RegisterPage/RegisterPage";
 import CheckUser from "./HOC/CheckUser";
-import BookTicketPage from "./pages/BookTicketPage/BookTicketPage";
+import ScreenPage from "./pages/ScreenPage/ScreenPage";
+import Page404 from "./pages/Page404/Page404";
+
 
 
 function App() {
@@ -23,19 +25,26 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="detail-movie/:idMovie" element={<DetailPage />} />
           <Route
-            path="book-ticket/:maLichChieu"
+            path="screen/:maLichChieu"
             element={
               <CheckUser>
-                <BookTicketPage/>
+                <ScreenPage/>
               </CheckUser>
             }
           />
+
+
+          
+          {/* Page not found */}
+          <Route path="*" element={<Page404 />}></Route>
         </Route>
         {/* auth template */}
-        <Route path="/auth" element={<AuthTemplate />}>
+        <Route path="auth" element={<AuthTemplate />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />}></Route>
         </Route>
+
+        
       </Routes>
     </BrowserRouter>
   );

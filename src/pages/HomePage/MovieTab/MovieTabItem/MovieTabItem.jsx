@@ -37,7 +37,7 @@ export default function MovieTabItem({ maHeThongRap }) {
     return dataTheater.lstCumRap?.map((cumrap) => {
       return (
         <Tabs.TabPane
-          style={{ height: "30rem" }}
+          style={{ height: "30rem"}}
           tab={
             <div className="w-64  text-left border-b">{cumrap.tenCumRap}</div>
           }
@@ -51,6 +51,30 @@ export default function MovieTabItem({ maHeThongRap }) {
             )}
           </div>
         </Tabs.TabPane>
+        // <Tabs
+        //   items={[
+        //     {
+        //       key: cumrap.maCumRap,
+        //       tab: (
+        //         <div className="w-64 text-left border-b">
+        //           {cumrap.tenCumRap}
+        //         </div>
+        //       ),
+        //       content: (
+        //         <div
+        //           style={{ height: "30rem" }}
+        //           className="h-full overflow-auto"
+        //         >
+        //           {renderLichChieuPhim(
+        //             cumrap.danhSachPhim,
+        //             cumrap.tenCumRap,
+        //             cumrap.diaChi
+        //           )}
+        //         </div>
+        //       ),
+        //     },
+        //   ]}
+        // />
       );
     });
   };
