@@ -26,7 +26,7 @@ export default function UserNavLoginTablet({ infoUser }) {
     <div className="flex items-end space-x-5">
       <div
         onClick={() => {
-          navigate("/userinfo");
+          navigate("/user/info");
         }}
         className=" flex items-end space-x-3  text-white cursor-pointer
        "
@@ -62,7 +62,7 @@ export default function UserNavLoginTablet({ infoUser }) {
             />
             <div
               onClick={() => {
-                navigate("/userinfo");
+                navigate("/user/info");
               }}
               className="cursor-pointer"
             >
@@ -77,7 +77,7 @@ export default function UserNavLoginTablet({ infoUser }) {
         {/* // Lịch sử mua vé  */}
         <div
           onClick={() => {
-            navigate("/history");
+            navigate("/user/history");
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >

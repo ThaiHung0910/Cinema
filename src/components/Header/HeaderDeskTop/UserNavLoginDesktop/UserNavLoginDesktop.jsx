@@ -21,12 +21,12 @@ export default function UserNavLoginDesktop({ infoUser }) {
     setOpen(false);
   };
   return (
-    <div className="flex items-end space-x-5">
+    <div className="flex space-x-5">
       <div
         onClick={() => {
-          navigate("/userinfo");
+          navigate("/user/info");
         }}
-        className=" flex items-end space-x-3  text-white cursor-pointer
+        className=" flex items-center space-x-3  text-white cursor-pointer
        "
       >
         <img
@@ -36,12 +36,14 @@ export default function UserNavLoginDesktop({ infoUser }) {
         />
         <span className="text-lg">{infoUser.hoTen}</span>
       </div>
+      <div>
       <button
         className="text-2xl  pb-1 text-blue-700 hover:text-blue-300  font-bold "
         onClick={showDrawer}
       >
         <MenuOutlined />
       </button>
+      </div>
       <Drawer
         size="default"
         placement="left"
@@ -60,7 +62,7 @@ export default function UserNavLoginDesktop({ infoUser }) {
             />
             <div
               onClick={() => {
-                navigate("/userinfo");
+                navigate("/user/info");
               }}
               className="cursor-pointer"
             >
@@ -75,7 +77,7 @@ export default function UserNavLoginDesktop({ infoUser }) {
         {/* // Lịch sử mua vé  */}
         <div
           onClick={() => {
-            navigate("/history");
+            navigate("/user/history");
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >

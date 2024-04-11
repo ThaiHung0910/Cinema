@@ -13,7 +13,7 @@ export default function ScreePageRight() {
     (state) => state.movieReducer
   );
   let {infoUser} = useSelector((state) => state.userReducer);
-  let isLoading = useSelector((state) => state.loadingReducer);
+  let {isLoading} = useSelector((state) => state.loadingReducer);
   let renderListBookingChair = () => {
     return listChairBook?.map((ghe) => {
       return <span key={ghe.maGhe}>{ghe.tenGhe} , </span>;
@@ -30,7 +30,7 @@ export default function ScreePageRight() {
     };
     if (listChairBook.length > 0) {
       let navigateCustom = () => {
-        navigate('/history')
+        navigate('/user/history')
       }
       dispatch(sendDataListBookingChairThunk({dataListBookingChair, navigateCustom}))
     } else {

@@ -11,8 +11,9 @@ import RegisterPage from "../src/pages/RegisterPage/RegisterPage";
 import CheckUser from "./HOC/CheckUser";
 import ScreenPage from "./pages/ScreenPage/ScreenPage";
 import Page404 from "./pages/Page404/Page404";
-
-
+import HistoryBooking from "./pages/HistoryBooking/HistoryBooking";
+import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
+import UserTemplate from "./templates/UserTemplate";
 
 function App() {
   return (
@@ -28,13 +29,11 @@ function App() {
             path="screen/:maLichChieu"
             element={
               <CheckUser>
-                <ScreenPage/>
+                <ScreenPage />
               </CheckUser>
             }
           />
 
-
-          
           {/* Page not found */}
           <Route path="*" element={<Page404 />}></Route>
         </Route>
@@ -44,7 +43,11 @@ function App() {
           <Route path="register" element={<RegisterPage />}></Route>
         </Route>
 
-        
+        {/* User Info */}
+        <Route path="user" element={<UserTemplate/>}>
+          <Route path="history" element={<HistoryBooking />} />
+          <Route path="info" element={<UserInfoPage/>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

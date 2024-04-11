@@ -49,7 +49,7 @@ export default function UserNavLoginMobile({ infoUser }) {
             />
             <div
               onClick={() => {
-                navigate("/userinfo");
+                navigate("/user/info");
               }}
               className="cursor-pointer"
             >
@@ -64,7 +64,7 @@ export default function UserNavLoginMobile({ infoUser }) {
         {/* // Lịch sử mua vé  */}
         <div
           onClick={() => {
-            navigate("/history");
+            navigate("/user/history");
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >

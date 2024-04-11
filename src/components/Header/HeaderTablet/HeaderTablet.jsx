@@ -1,13 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import ScrollHeader from "../../Scroll/ScrollHeader";
 import logo from "../../../assets/img/logo.png";
 import { useSelector } from "react-redux";
 import UserNavLogOutTablet from "./UserNavLogOutTablet/UserNavLogOutTablet";
 import UserNavLoginTablet from "./UserNavLoginTablet/UserNavLoginTablet";
 
+
 export default function HeaderTablet() {
-  let navigate = useNavigate();
   const scrollDirection = ScrollHeader();
   const { infoUser } = useSelector((state) => state.userReducer);
 
@@ -30,14 +30,12 @@ export default function HeaderTablet() {
       } py-2 z-30 shadow-md`}
     >
       <div className="container mx-auto flex justify-between items-center  px-10">
-        <div
-          onClick={() => {
-            navigate("/");
-          }}
-          className="text-5xl text-blue-700  font-extrabold cursor-pointer"
-        >
-          <img src={logo} alt=""></img>
-        </div>
+        <NavLink to={"/"} className="text-3xl font-extrabold">
+          <div className="flex justify-between items-center">
+            <img src={logo} className="w-16" alt="" />
+            <span className="text-blue-300">Cinema</span>
+          </div>
+        </NavLink>
         <div>{renderUserNavTablet()}</div>
       </div>
     </div>

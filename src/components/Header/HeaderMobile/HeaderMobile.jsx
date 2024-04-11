@@ -1,13 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { useSelector } from "react-redux";
 import ScrollHeader from "../../Scroll/ScrollHeader";
 import logo from "../../../assets/img/logo.png";
 import UserNavLoginMobile from "./UserNavLoginMobile/UserNavLoginMobile";
 import UserNavLogOutMobile from "./UserNavLogOutMobile/UserNavLogOutMobile";
-
 export default function HeaderMobile() {
-  let navigate = useNavigate();
   const { infoUser } = useSelector((state) => state.userReducer);
 
   let renderUserNavMobile = () => {
@@ -30,14 +28,12 @@ export default function HeaderMobile() {
       } py-2 z-30 shadow-md`}
     >
       <div className="container mx-auto flex justify-between items-center  pr-10 pl-5">
-        <div
-          onClick={() => {
-            navigate("/");
-          }}
-          className=" text-blue-700  font-extrabold cursor-pointer text-left"
-        >
-          <img src={logo} alt=""></img>
-        </div>
+         <NavLink to={"/"} className="text-3xl font-extrabold">
+          <div className="flex justify-between items-center">
+            <img src={logo} className="w-16" alt="" />
+            <span className="text-blue-300">Cinema</span>
+          </div>
+        </NavLink>
         <div>{renderUserNavMobile}</div>
       </div>
     </div>
