@@ -12,6 +12,7 @@ import CheckUser from "./HOC/CheckUser";
 import BookTicketPage from "./pages/BookTicketPage/BookTicketPage";
 import AdminTemplate from "./templates/AdminTemplate";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import AddFlims from "./pages/AdminPage/Films/AddFlims";
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
         </Route>
         {/* admin template */}
         <Route path="/admin" element={<AdminTemplate />}>
-          <Route path="firms" element={<AdminPage />} />
+          <Route path="films" element={<AdminPage />} />
+          <Route path="addFilms" element={<AddFlims />} />
         </Route>
       </Routes>
     </BrowserRouter>
