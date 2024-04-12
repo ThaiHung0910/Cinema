@@ -1,7 +1,7 @@
 import { Modal } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LikeOutlined, SendOutlined, EditFilled } from "@ant-design/icons";
+import { LikeOutlined } from "@ant-design/icons";
 import {
   likeCommentAction,
   submitCommentAction,
@@ -26,9 +26,9 @@ export default function PageDetailComment() {
           key={itemComment.id}
           className="grid grid-cols-9 w-full xl:pr-24 md:px-6 px-3"
         >
-          <div className="relative ">
+          <div className="relative w-9 h-9">
             <img
-              className="xl:w-full md:w-3/5 w-3/4 absolute top-17 xl:right-1 md:right-1 right-1 rounded-full"
+              className="xl:w-full md:w-3/5 w-3/4 absolute top-0 xl:right-1 md:right-1 right-1 rounded-full"
               src={itemComment.hinhAnh}
               onError={(e) => {
                 e.target.src = imageNotFound;
@@ -37,9 +37,9 @@ export default function PageDetailComment() {
             />
           </div>
           <div className="col-span-8">
-            <div className="inline-block relative xl:px-2 md:px-2 px-2 xl:pt-3 md:pt-3 pt-3 xl:pb-4 md:pb-3 pb-3 bg-gray-300 rounded-lg">
+            <div className="inline-block relative xl:px-2 md:px-2 px-2 xl:pt-3 md:pt-3 pt-3 xl:pb-4 md:pb-3 pb-3 bg-gray-300 rounded-2xl">
               <div className="font-semibold ">{itemComment.name}</div>
-              <div className="">{itemComment.content}</div>
+              <div>{itemComment.content}</div>
               <span className="flex items-center absolute xl:px-1 md:px-1 px-1 rounded-lg xl:-bottom-3 md:-bottom-3 -bottom-2 xl:right-3 md:right-3 right-2 bg-white shadow ">
                 {itemComment.numberLike > 0 ? (
                   <>
@@ -79,10 +79,15 @@ export default function PageDetailComment() {
     let hinhAnh = avatarUser;
     let statusLike = false;
     let numberLike = 0;
-    
-    console.log(hinhAnh)
+
+    console.log(hinhAnh);
     const newComment = {
-      id, name, content, hinhAnh, statusLike, numberLike
+      id,
+      name,
+      content,
+      hinhAnh,
+      statusLike,
+      numberLike,
     };
 
     dispatch(submitCommentAction(newComment));
