@@ -50,7 +50,7 @@ export const updateThunk = createAsyncThunk(
         matKhau: infoUser.matKhau,
       });
       userLocal.set(updateInfo.data.content);
-      return infoUser;
+      return updateInfo.data.content;
     } catch (err) {
       message.error("Cập nhật thất bại");
       return rejectWithValue(err);

@@ -50,6 +50,29 @@ export default function MovieList() {
     slidesToScroll: 5,
     initialSlide: 0,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1279,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          dots: false,
+          arrows: false,
+          speed: 500,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          dots: false,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 0,
+          arrows: false,
+          speed: 500,
+        },
+      },
+    ],
   };
 
   return (

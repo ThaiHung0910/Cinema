@@ -34,7 +34,7 @@ export default function HeaderMobile() {
             <span className="text-blue-300">Cinema</span>
           </div>
         </NavLink>
-        <div>{renderUserNavMobile}</div>
+        <div>{renderUserNavMobile()}</div>
       </div>
     </div>
   );

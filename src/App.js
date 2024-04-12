@@ -18,8 +18,8 @@ import UserTemplate from "./templates/UserTemplate";
 function App() {
   return (
     <BrowserRouter>
-      <ButtonToTop />
       <Loading />
+
       <Routes>
         {/* home template */}
         <Route path="" element={<HomeTemplate />}>
@@ -44,11 +44,13 @@ function App() {
         </Route>
 
         {/* User Info */}
-        <Route path="user" element={<UserTemplate/>}>
+        <Route path="user" element={<UserTemplate />}>
           <Route path="history" element={<HistoryBooking />} />
-          <Route path="info" element={<UserInfoPage/>} />
+          {/* <Route path="info" element={<UserInfoPage />} /> */}
         </Route>
       </Routes>
+
+      <ButtonToTop />
     </BrowserRouter>
   );
 }

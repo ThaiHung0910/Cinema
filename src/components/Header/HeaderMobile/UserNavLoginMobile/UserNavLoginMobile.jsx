@@ -8,7 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Drawer } from "antd";
 import { logOutAction } from "../../../../redux/userReducer/userSlice";
-import { avatarUser } from "../../../../assets/img/js/img";
+import { avatarUser, imageNotFound } from "../../../../assets/img/js/img";
 
 
 
@@ -37,7 +37,7 @@ export default function UserNavLoginMobile({ infoUser }) {
         closable={false}
         onClose={onClose}
         open={open}
-        style={{ backgroundColor: "#18191A" }}
+        styles={{content: { backgroundColor: "#18191A" }}}
       >
         {/* //Information  */}
         <div className="space-y-1 ">
@@ -45,6 +45,9 @@ export default function UserNavLoginMobile({ infoUser }) {
             <img
               className="h-12 w-12  rounded-full"
               src={avatarUser}
+              onError={(e) => {
+                e.target.src = imageNotFound;
+              }}
               alt=""
             />
             <div
@@ -68,7 +71,7 @@ export default function UserNavLoginMobile({ infoUser }) {
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >
-          <HistoryOutlined className="h-8 w-8 leading-7 text-xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
+          <HistoryOutlined className="p-2 leading-7 text-xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
           <span className=" text-lg text-[#C6C7CC] ">Lịch sử mua vé</span>
         </div>
         {/* // LogOut  */}
@@ -78,7 +81,7 @@ export default function UserNavLoginMobile({ infoUser }) {
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >
-          <LogoutOutlined className="h-8 w-8 leading-7 text-xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
+          <LogoutOutlined className="p-2 leading-7 text-xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
           <span className=" text-lg text-[#C6C7CC] ">Đăng xuất</span>
         </div>
       </Drawer>

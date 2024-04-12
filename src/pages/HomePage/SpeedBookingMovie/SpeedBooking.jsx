@@ -45,9 +45,9 @@ export default function SpeedBooking() {
   };
   // RENDER PHIM
   let renderOptionNameMovie = () => {
-    return dataListMovie.map((movie) => {
+    return dataListMovie.map((movie, id) => {
       return (
-        <option key={movie.maPhim} value={movie.maPhim}>
+        <option key={id} value={movie.maPhim}>
           {movie.tenPhim}
         </option>
       );
@@ -103,8 +103,6 @@ export default function SpeedBooking() {
 
   // HANDLE SUBMIT
   let handleSubmit = () => {
-    // console.log("selectLichChieu.current.value", selectLichChieu.current.value);
-    // console.log("selectLichChieu.current.value", selectCumRap.current.value);
     let checkValueLichChieu = selectLichChieu.current.value;
     let checkValueCumRap = selectCumRap.current.value;
     if (checkValueCumRap !== 0 && checkValueLichChieu !== 0) {

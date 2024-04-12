@@ -9,9 +9,9 @@ export default function ItemMovie({ dataMovie, index }) {
         onClick={() => {
           navigate(`/detail-movie/${dataMovie.maPhim}`);
         }}
-        className="h-5/6 flex items-center justify-center relative overflow-hidden rounded-xl border border-gray-400"
+        className="xl:h-5/6 md:h-4/6 h-3/6 flex items-center justify-center relative overflow-hidden rounded-xl border border-gray-400"
       >
-        <h1 className="text-4xl absolute bottom-0 left-0 font-bold text-white">
+        <h1 className="xl:text-5xl md:text-4xl text-3xl absolute bottom-0 left-0 font-bold text-white">
           {index + 1}
         </h1>
         <img
@@ -20,7 +20,7 @@ export default function ItemMovie({ dataMovie, index }) {
           alt=""
         />
       </div>
-      <div className="h-1/6 py-3 text-white text-lg font-bold">
+      <div className="h-1/6 py-3 text-white  font-bold xl:text-xl md:text-base text-xs">
         {dataMovie.tenPhim}
       </div>
     </div>

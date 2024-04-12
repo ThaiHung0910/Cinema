@@ -51,7 +51,6 @@ export default function UserInfoPage() {
     },
 
     onSubmit: (value) => {
-      console.log(value)
       dispatch(updateThunk(value));
     },
 
