@@ -8,7 +8,6 @@ import { backGroundLogin } from "../../assets/img/js/img";
 
 export default function DetailPage() {
   let scrollRefMuaVe = useRef();
-  // Lấy param idMovie trên url xuống
   let { idMovie } = useParams();
   let [showTime, setShowTime] = useState({});
   let [dataMovieDetail, setDataMovieDetail] = useState({});

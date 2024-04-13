@@ -5,7 +5,7 @@ import * as yup from "yup";
 import {registerThunk } from "../../redux/userReducer/userThunk";
 import { backGroundLogin } from "../../assets/img/js/img";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/img/logo/logo.png";
 import FormInputCustom from "../../components/Input/FormInputCustom";
 
 

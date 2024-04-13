@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import logo from "../../../assets/img/logo.png";
+import logo from "../../../assets/img/logo/logo.png";
 import ScrollHeader from "../../Scroll/ScrollHeader";
 import UserNavLoginDesktop from "./UserNavLoginDesktop/UserNavLoginDesktop";
 import UserNavLogOutDesktop from "./UserNavLogOutDesktop/UserNavLogOutDesktop";

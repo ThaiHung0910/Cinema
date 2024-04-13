@@ -1,8 +1,8 @@
 import avatar from "../avatarUser.png";
 import imgNotFound from "../imgNotFound.jpg";
-import lotr from "../lotr.png";
-import harrypotter from "../harrypotter.jpg";
-import denmark from "../denmark.jpg";
+import lotr from "../comment/lotr.png";
+import harrypotter from "../comment/harrypotter.jpg";
+import denmark from "../comment/denmark.jpg";
 
 export const backGroundLogin =
   "https://demo1.cybersoft.edu.vn/static/media/backapp.b46ef3a1.jpg";

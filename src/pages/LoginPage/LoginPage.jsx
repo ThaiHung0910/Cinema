@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import FormInputCustom from "../../components/Input/FormInputCustom";
 import iconLogin from "../../assets/json/iconLogin.json";
 import { backGroundLogin } from "../../assets/img/js/img";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/img/logo/logo.png";
 import { loginThunk } from "../../redux/userReducer/userThunk";
 
 

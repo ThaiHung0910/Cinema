@@ -1,5 +1,5 @@
 import React from "react";
-import logo2 from "../../assets/img/logo2.png";
+import logo2 from "../../assets/img/logo/logo2.png";
 
 export default function Footer() {
   return (

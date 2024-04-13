@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink} from "react-router-dom";
 import { useSelector } from "react-redux";
 import ScrollHeader from "../../Scroll/ScrollHeader";
-import logo from "../../../assets/img/logo.png";
+import logo from "../../../assets/img/logo/logo.png";
 import UserNavLoginMobile from "./UserNavLoginMobile/UserNavLoginMobile";
 import UserNavLogOutMobile from "./UserNavLogOutMobile/UserNavLogOutMobile";
 export default function HeaderMobile() {

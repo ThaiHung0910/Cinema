@@ -15,9 +15,7 @@ export default function SpeedBooking() {
   let selectCumRap = useRef();
   let selectLichChieu = useRef();
 
-  useEffect(() => {
-    fetchApiListMovie();
-  }, []);
+ 
 
   let fetchApiListMovie = async () => {
     try {
@@ -27,6 +25,10 @@ export default function SpeedBooking() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    fetchApiListMovie();
+  }, []);
 
   let soSanhHaiArray = (arr1, arr2) => {
     const soSanh = JSON.stringify(arr1) === JSON.stringify(arr2);
@@ -117,8 +119,8 @@ export default function SpeedBooking() {
     }
   };
   return (
-    <div className="container mx-auto flex items-center justify-center py-4">
-      <div className="grid grid-cols-4 w-5/6 p-3 border-gray-500 border shadow-xl rounded ">
+    <div className="container mx-auto flex items-center justify-center py-4 xl:t-36 relative">
+      <div className="grid grid-cols-4 xl:w-5/6 xl:p-3 md:p-2 border-blue-400 border shadow-xl rounded bg-white">
         {/* // RENDER PHIM  */}
         <div className={` ${style["parents__select"]}`}>
           <select
@@ -154,7 +156,7 @@ export default function SpeedBooking() {
         <div className=" flex items-center justify-center">
           <button
             onClick={handleSubmit}
-            className="bg-blue-700 px-3 py-2 text-white w-2/3 rounded-xl"
+            className="bg-blue-700 hover:px-4 px-3 py-2 hover:py-3 duration-150 text-white w-2/3 rounded-xl"
           >
             ĐẶT VÉ
           </button>
