@@ -1,8 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import { movieSer } from "../../../service/movieSer";
 
 const Films = () => {
+  const [movieData, setDataMovie] = useState([]);
+
+  const fetchMovieData = async () => {
+    try {
+      const data = await movieSer.getListMovies();
+      console.log("😢 ~ data", data);
+
+      const newData = data.data.content;
+      console.log("😢 ~ newData", newData);
+
+      setDataMovie(newData);
+    } catch (error) {
+      console.log("😢 ~ error", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMovieData();
+  }, []);
+
+  const renderTable = () => {
+    return movieData.map((movie) => {
+      return (
+        <tr style={{ height: "150px" }}>
+          <td style={{ width: "180px" }} className="text-center">
+            {movie.maPhim}
+          </td>
+          <td>
+            <img
+              className="mx-auto w-32 h-32 object-cover rounded"
+              src={movie.hinhAnh}
+              alt=""
+            />
+          </td>
+          <td style={{ width: "240px" }} className="text-center">
+            {movie.tenPhim}
+          </td>
+          <td style={{ width: "530px" }} className="text-center">
+            {movie.moTa.substring(0, 100)}...
+          </td>
+          <td className="text-center space-x-6">
+            <button className="text-blue-500 text-2xl">
+              <EditOutlined />
+            </button>
+            <button className="text-red-500 text-2xl">
+              <DeleteOutlined />
+            </button>
+          </td>
+        </tr>
+      );
+    });
+  };
+
   return (
     <div className="container">
       <div className="header">
@@ -14,18 +68,20 @@ const Films = () => {
       <div>
         <table className="container table mx-auto mt-4">
           <thead className="m-3">
-            <th className="text-center">Mã phim</th>
-            <th className="text-center">Hình ảnh</th>
-            <th className="text-center">Tên phim</th>
-            <th className="text-center">Mô tả</th>
-            <th className="text-center">Hành động</th>
+            <tr>
+              <th className="text-center">Mã phim</th>
+              <th className="text-center">Hình ảnh</th>
+              <th className="text-center">Tên phim</th>
+              <th className="text-center">Mô tả</th>
+              <th className="text-center">Hành động</th>
+            </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            {/* <tr>
+              <td className="text-center"></td>
+              <td className="text-center"> </td>
+              <td className="text-center"></td>
+              <td className="text-center"></td>
               <td className="text-center space-x-6">
                 <button className="text-blue-500 text-2xl">
                   <EditOutlined />
@@ -34,7 +90,8 @@ const Films = () => {
                   <DeleteOutlined />
                 </button>
               </td>
-            </tr>
+            </tr> */}
+            {renderTable()}
           </tbody>
         </table>
       </div>
