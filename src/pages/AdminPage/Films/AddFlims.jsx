@@ -101,8 +101,8 @@ const AddFlims = () => {
               </button>
             </Upload>
           </Form.Item>
-          <Form.Item label="Button">
-            <Button>Cập nhật</Button>
+          <Form.Item label="Thêm phim">
+            <Button>Thêm phim</Button>
           </Form.Item>
         </Form>
       </div>

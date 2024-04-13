@@ -11,8 +11,9 @@ import RegisterPage from "../src/pages/RegisterPage/RegisterPage";
 import CheckUser from "./HOC/CheckUser";
 import BookTicketPage from "./pages/BookTicketPage/BookTicketPage";
 import AdminTemplate from "./templates/AdminTemplate";
-import AdminPage from "./pages/AdminPage/AdminPage";
+// import AdminPage from "./pages/AdminPage/AdminPage";
 import AddFlims from "./pages/AdminPage/Films/AddFlims";
+import Films from "./pages/AdminPage/Films/Films";
 
 function App() {
   return (
@@ -40,8 +41,8 @@ function App() {
         </Route>
         {/* admin template */}
         <Route path="/admin" element={<AdminTemplate />}>
-          <Route path="films" element={<AdminPage />} />
-          <Route path="addFilms" element={<AddFlims />} />
+          <Route path="movies" element={<Films />} />
+          <Route path="addMovies" element={<AddFlims />} />
         </Route>
       </Routes>
     </BrowserRouter>

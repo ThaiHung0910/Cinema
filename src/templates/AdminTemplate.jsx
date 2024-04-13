@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { Layout, Menu, theme } from "antd";
-import { DesktopOutlined, FileOutlined, UserOutlined } from "@ant-design/icons";
+import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 import Films from "../pages/AdminPage/Films/Films";
 import AddFlims from "../pages/AdminPage/Films/AddFlims";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
   return {
@@ -17,29 +17,17 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem("Films", "sub1", <UserOutlined />, [
-    getItem("Film", "/admin/films"),
-    getItem("AddFilm", "/admin/addFilms"),
+  getItem("Movie", "1", <UserOutlined />, [
+    getItem("Movie", "/admin/movies"),
+    getItem("AddMovie", "/admin/addMovies"),
   ]),
-  getItem("User", "1", <FileOutlined />),
-  getItem("Showtime", "4", <DesktopOutlined />),
+  getItem("Showtime", "2", <DesktopOutlined />),
 ];
 
 // const key = items.getItem.key;
 // console.log("key: ", key);
 
 const AdminTemplate = () => {
-  // const { infoUser } = useSelector((state) => state.userReducer),
-  //   navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (infoUser) {
-  //     navigate("/admin/films");
-  //   } else {
-  //     navigate("/auth/login");
-  //   }
-  // }, []);
-
   const [collapsed, setCollapsed] = useState(false);
 
   const {
@@ -94,26 +82,12 @@ const AdminTemplate = () => {
                 borderRadius: borderRadiusLG,
               }}
             >
-              <Films />
-            </div>
-            <div
-              style={{
-                padding: 24,
-                minHeight: 360,
-                background: colorBgContainer,
-                borderRadius: borderRadiusLG,
-              }}
-            >
-              <AddFlims />
+              <Routes>
+                <Route path="movies" element={<Films />} />
+                <Route path="addMovies" element={<AddFlims />} />
+              </Routes>
             </div>
           </Content>
-          <Footer
-            style={{
-              textAlign: "center",
-            }}
-          >
-            Ant Design ©{new Date().getFullYear()} Created by Ant UED
-          </Footer>
         </Layout>
       </Layout>
     </div>

@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { movieSer } from "../../../service/movieSer";
+import { useNavigate } from "react-router-dom";
 
 const Films = () => {
   const [movieData, setDataMovie] = useState([]);
+
+  const navigate = useNavigate();
 
   const fetchMovieData = async () => {
     try {
@@ -61,7 +64,13 @@ const Films = () => {
     <div className="container">
       <div className="header">
         <h1 className="text-3xl">Quản lý phim</h1>
-        <Button type="primary" className="mt-3">
+        <Button
+          type="primary"
+          className="mt-3"
+          onClick={() => {
+            navigate("/admin/addMovies");
+          }}
+        >
           Thêm phim mới
         </Button>
       </div>
@@ -76,23 +85,7 @@ const Films = () => {
               <th className="text-center">Hành động</th>
             </tr>
           </thead>
-          <tbody>
-            {/* <tr>
-              <td className="text-center"></td>
-              <td className="text-center"> </td>
-              <td className="text-center"></td>
-              <td className="text-center"></td>
-              <td className="text-center space-x-6">
-                <button className="text-blue-500 text-2xl">
-                  <EditOutlined />
-                </button>
-                <button className="text-red-500 text-2xl">
-                  <DeleteOutlined />
-                </button>
-              </td>
-            </tr> */}
-            {renderTable()}
-          </tbody>
+          <tbody>{renderTable()}</tbody>
         </table>
       </div>
     </div>
