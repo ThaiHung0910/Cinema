@@ -106,7 +106,7 @@ export default function SpeedBooking() {
   let handleSubmit = () => {
     let checkValueLichChieu = selectLichChieu.current.value;
     let checkValueCumRap = selectCumRap.current.value;
-    if (checkValueCumRap !== 0 && checkValueLichChieu !== 0) {
+    if (checkValueCumRap != 0 && checkValueLichChieu != 0) {
       navigate(`/screen/${checkValueLichChieu}`);
     } else {
       Swal.fire({
