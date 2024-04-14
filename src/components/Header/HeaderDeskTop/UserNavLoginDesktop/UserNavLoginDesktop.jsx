@@ -8,7 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Drawer } from "antd";
 import { logOutAction } from "../../../../redux/userReducer/userSlice";
-import { avatarUser } from "../../../../assets/img/js/img";
+import { avatarUser, imageNotFound } from "../../../../assets/img/js/img";
 
 export default function UserNavLoginDesktop({ infoUser }) {
   let dispatch = useDispatch();
@@ -21,34 +21,39 @@ export default function UserNavLoginDesktop({ infoUser }) {
     setOpen(false);
   };
   return (
-    <div className="flex items-end space-x-5">
+    <div className="flex space-x-5">
       <div
         onClick={() => {
-          navigate("/userinfo");
+          navigate("/user/info");
         }}
-        className=" flex items-end space-x-3  text-white cursor-pointer
+        className=" flex items-center space-x-3  text-white cursor-pointer
        "
       >
         <img
           className=" h-9 w-9 text-xl  bg-[#9E9E9E] rounded-full"
           src={avatarUser}
+          onError={(e) => {
+            e.target.src = imageNotFound;
+          }}
           alt=""
         />
         <span className="text-lg">{infoUser.hoTen}</span>
       </div>
+      <div>
       <button
         className="text-2xl  pb-1 text-blue-700 hover:text-blue-300  font-bold "
         onClick={showDrawer}
       >
         <MenuOutlined />
       </button>
+      </div>
       <Drawer
         size="default"
         placement="left"
         closable={false}
         onClose={onClose}
         open={open}
-        styles={{ backgroundColor: "#18191A" }}
+        style={{ backgroundColor: "#18191A" }}
       >
         {/* //Information  */}
         <div className="space-y-1 ">
@@ -56,11 +61,14 @@ export default function UserNavLoginDesktop({ infoUser }) {
             <img
               className="h-12 w-12  rounded-full"
               src={avatarUser}
+              onError={(e) => {
+                e.target.src = imageNotFound;
+              }}
               alt=""
             />
             <div
               onClick={() => {
-                navigate("/userinfo");
+                navigate("/user/info");
               }}
               className="cursor-pointer"
             >
@@ -75,11 +83,11 @@ export default function UserNavLoginDesktop({ infoUser }) {
         {/* // Lịch sử mua vé  */}
         <div
           onClick={() => {
-            navigate("/history");
+            navigate("/user/history");
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >
-          <HistoryOutlined className="h-8 w-8 leading-7 text-xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
+          <HistoryOutlined className="p-2 leading-7 text-xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
           <span className=" text-lg text-[#C6C7CC] ">Lịch sử mua vé</span>
         </div>
         {/* // LogOut  */}
@@ -89,7 +97,7 @@ export default function UserNavLoginDesktop({ infoUser }) {
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >
-          <LogoutOutlined className="h-8 w-8 leading-7 text-xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
+          <LogoutOutlined className="p-2 leading-7 text-xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
           <span className=" text-lg text-[#C6C7CC] ">Đăng xuất</span>
         </div>
       </Drawer>

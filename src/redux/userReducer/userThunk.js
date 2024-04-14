@@ -30,8 +30,29 @@ export const registerThunk = createAsyncThunk(
       message.success("Đăng ký thành công");
       return infoUser;
     } catch (err) {
-      console.log(err);
       message.error("Đăng ký thất bại");
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const updateThunk = createAsyncThunk(
+  "userReducer/updateThunk",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const data = await userSer.putUpdateInfo(payload);
+      let infoUser = data.data.content;
+      console.log(infoUser)
+
+      message.success("Cập nhật thành công");
+      let updateInfo = await userSer.postLogin({
+        taiKhoan: infoUser.taiKhoan,
+        matKhau: infoUser.matKhau,
+      });
+      userLocal.set(updateInfo.data.content);
+      return updateInfo.data.content;
+    } catch (err) {
+      message.error("Cập nhật thất bại");
       return rejectWithValue(err);
     }
   }

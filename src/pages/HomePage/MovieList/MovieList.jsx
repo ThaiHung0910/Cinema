@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick/lib/slider";
+import Slider from "react-slick";
 import { useRef } from "react";
 import { MA_NHOM } from "../../../service/urlConfig";
 import { movieSer } from "../../../service/movieSer";
@@ -31,13 +31,12 @@ export default function MovieList() {
 
   let renderListMovie = () => {
     return listMovie.map((movie, index) => {
-      return <ItemMovie key={movie.maPhim} dataMovie={movie} index={index} />;
+      return <ItemMovie key={index} dataMovie={movie} index={index} />;
     });
   };
 
   const next = () => {
     refSlide.current.slickNext();
-    console.log("yes");
   };
   const previous = () => {
     refSlide.current.slickPrev();
@@ -51,28 +50,51 @@ export default function MovieList() {
     slidesToScroll: 5,
     initialSlide: 0,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1279,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          dots: false,
+          arrows: false,
+          speed: 500,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          dots: false,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 0,
+          arrows: false,
+          speed: 500,
+        },
+      },
+    ],
   };
 
   return (
     <div
-      className="py-12"
+      className="xl:py-12 md:py-10 py-8 xl:my-1 md:my-1 mb-12"
       style={{ backgroundImage: `url(${backGroundLogin})` }}
     >
-      <h1 className="text-white text-4xl text-center font-bold">
+      <h1 className="text-white xl:text-4xl md:text-3xl text-2xl text-center font-bold">
         Danh sách phim
       </h1>
-      <div className="relative h-[32rem]  flex items-center justify-center container mx-auto  ">
+      <div className="relative xl:h-[32rem] md:h-[31rem] h-[20rem]  flex items-center justify-center container mx-auto">
         {/* // PRE  */}
         <button
           onClick={previous}
-          className="  text-gray-300 text-5xl absolute left-0 top-2/5 "
+          className="text-gray-300 xl:text-5xl md:5xl text-3xl absolute xl:left-10 md:left-5 left-2 xl:top-2/5 md:top-1/3 top-1/3"
         >
           <LeftCircleFilled />
         </button>
         {/* // NEXT  */}
         <button
           onClick={next}
-          className=" text-gray-300 text-5xl absolute right-0 top-2/5"
+          className="text-gray-300 xl:text-5xl md:5xl text-3xl absolute xl:right-10 md:right-5 right-2 xl:top-2/5 md:top-1/3 top-1/3"
         >
           <RightCircleFilled />
         </button>

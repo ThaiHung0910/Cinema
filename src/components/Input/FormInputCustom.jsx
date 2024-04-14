@@ -1,42 +1,20 @@
 import React, { memo, useEffect, useState } from "react";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { userSer } from "../../service/userSer";
+import { useSelector } from "react-redux";
 
 function FormInputCustom({ name, label, type, disable, formikField }) {
   let [translateLabel, setTranslateLabel] = useState(true);
   let [inputType, setInputType] = useState(true);
-  let [dataUser, setDataUser] = useState();
   const { values, touched, errors, handleChange, handleBlur } = formikField;
   let value = values[name];
+  const { errorMessage } = useSelector((state) => state.userReducer);
 
-  const fetchDataUser = async (key) => {
-    try {
-      switch (name) {
-        case "taiKhoan":
-        case "email":
-          let listData = [];
-          for (let i = 1; i <= 9; i++) {
-            const api = await userSer.getListUser(`GP0${i}`, key);
-            let data = (dataUser = api.data.content);
-            if (dataUser.length) {
-              listData = [...listData, ...data];
-            }
-          }
-
-          listData?.forEach((e) => {
-            if (e[name] === key) {
-              setDataUser([e]);
-            }
-          });
-          break;
-
-        default:
-      }
-    } catch (error) {
-      console.log(error);
+  if (errorMessage) {
+    if (errorMessage.includes(label)) {
+      errors[name] = errorMessage;
     }
-  };
-
+  }
 
   useEffect(() => {
     if (value) {
@@ -63,33 +41,18 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
         }`}
         name={name}
         value={value}
-        onChange={(e) => {
-          handleChange(e);
-        }}
+        onChange={handleChange}
         onFocus={() => {
           if (!value) {
             setTranslateLabel(!translateLabel);
           }
         }}
-        onBlur={async (e) => {
-          handleBlur(e);
-          
-          console.log("Errors:", errors)
-          if (dataUser?.length) {
-            formikField.setErrors({ [name]: `${name} đã tồn tại` });
-          }
-          await fetchDataUser(value);
-
-        }}
+        onBlur={handleBlur}
       />
 
-      {touched[name] && errors[name] ? (
-        <div className="xl:h-6 md:h-4 h-2 xl:text-base md:text-sm text-xs text-orange-500">
-          {errors[name]}
-        </div>
-      ) : (
-        <div className="xl:h-6 md:h-4 h-2 xl:text-base md:text-sm text-xs text-orange-500"></div>
-      )}
+      <div className="xl:h-6 md:h-4 h-2 xl:text-base md:text-sm text-xs text-orange-500">
+        {touched[name] && errors[name] ? errors[name] : ""}
+      </div>
 
       {type === "password" ? (
         <span

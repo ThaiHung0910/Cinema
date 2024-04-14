@@ -1,10 +1,12 @@
 import { Tabs } from "antd";
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { movieSer } from "../../../../service/movieSer";
 import { MA_NHOM } from "../../../../service/urlConfig";
 import MovieTabItemChild from "./MovieTabItemChild/MovieTabItemChild";
 
 export default function MovieTabItem({ maHeThongRap }) {
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
   let [dataTheater, setDataTheater] = useState({});
   let featchApi = async ({ maHeThongRap }) => {
     let params = {
@@ -37,7 +39,7 @@ export default function MovieTabItem({ maHeThongRap }) {
     return dataTheater.lstCumRap?.map((cumrap) => {
       return (
         <Tabs.TabPane
-          style={{ height: "30rem" }}
+          style={{ height: "35rem"}}
           tab={
             <div className="w-64  text-left border-b">{cumrap.tenCumRap}</div>
           }
@@ -55,7 +57,9 @@ export default function MovieTabItem({ maHeThongRap }) {
     });
   };
   return (
-    <Tabs style={{ height: "30rem" }} tabPosition="left" defaultActiveKey="1">
+    <Tabs className=" w-full xl:h-[38rem] md:h-[40rem] h-[40rem]"  centered
+    tabPosition={isDesktop ? "left" : "top"}
+    defaultActiveKey="BHD Star Cineplex - Bitexco">
       {renderTheater()}{" "}
     </Tabs>
   );

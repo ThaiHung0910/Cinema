@@ -1,21 +1,19 @@
 import React from "react";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
-import style from "./BookTicketRight.module.css";
+import style from "./ScreePageRight.module.css";
 import { maVach } from "../../../assets/img/js/img";
 import { useNavigate } from "react-router-dom";
-// import { removeChairAction } from "../../../redux/Action/BookingAction";
-import { movieSer } from "../../../service/movieSer";
 import { sendDataListBookingChairThunk } from "../../../redux/movieReducer/movieThunk";
 
-export default function BookTicketRight() {
+export default function ScreePageRight() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
   let { listChairBook, infoMovie } = useSelector(
     (state) => state.movieReducer
   );
   let {infoUser} = useSelector((state) => state.userReducer);
-  let isLoading = useSelector((state) => state.loadingReducer);
+  let {isLoading} = useSelector((state) => state.loadingReducer);
   let renderListBookingChair = () => {
     return listChairBook?.map((ghe) => {
       return <span key={ghe.maGhe}>{ghe.tenGhe} , </span>;
@@ -32,7 +30,7 @@ export default function BookTicketRight() {
     };
     if (listChairBook.length > 0) {
       let navigateCustom = () => {
-        navigate('/history')
+        navigate('/user/history')
       }
       dispatch(sendDataListBookingChairThunk({dataListBookingChair, navigateCustom}))
     } else {

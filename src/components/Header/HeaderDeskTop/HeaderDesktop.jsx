@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import logo from "../../../assets/img/logo.png";
+import logo from "../../../assets/img/logo/logo.png";
 import ScrollHeader from "../../Scroll/ScrollHeader";
 import UserNavLoginDesktop from "./UserNavLoginDesktop/UserNavLoginDesktop";
 import UserNavLogOutDesktop from "./UserNavLogOutDesktop/UserNavLogOutDesktop";
 
 const HeaderDesktop = () => {
   const scrollDirection = ScrollHeader();
-  const { infoUser } = useSelector((state) => state.userReducer)
+  const { infoUser } = useSelector((state) => state.userReducer);
 
   let renderUserNavDesktop = () => {
     if (infoUser) {
@@ -17,10 +17,7 @@ const HeaderDesktop = () => {
       return <UserNavLogOutDesktop />;
     }
   };
-  useEffect(() => {
 
-  }, [infoUser])
-  
   return (
     <div
       style={{
@@ -29,23 +26,16 @@ const HeaderDesktop = () => {
       }}
       className={`sticky ${
         scrollDirection === "down" ? "-top-24" : "top-0"
-      } py-1  bg-zinc-900 z-30 shadow-md`}
+      } py-2  z-30 shadow-md`}
     >
       <div className="container mx-auto flex justify-between items-center  px-10">
-        <div>
-          <NavLink
-            to={"/"}
-            className="text-white font-medium text-2xl hover:text-yellow-400"
-          >
-            <div
-              className="flex justify-between items-center"
-              style={{ width: "90px", height: "auto" }}
-            >
-              <img src={logo} className="w-16 h-16" alt="" />
-              <span className="text-blue-300">Cinema</span>
-            </div>
-          </NavLink>
-        </div>
+        <NavLink to={"/"} className="text-3xl font-extrabold">
+          <div className="flex justify-between items-center">
+            <img src={logo} className="w-16" alt="" />
+            <span className="text-blue-300">Cinema</span>
+          </div>
+        </NavLink>
+
         <div className="text-white">{renderUserNavDesktop()}</div>
       </div>
     </div>
@@ -53,5 +43,3 @@ const HeaderDesktop = () => {
 };
 
 export default HeaderDesktop;
-
-

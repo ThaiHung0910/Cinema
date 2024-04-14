@@ -49,6 +49,37 @@ export default function NewsMovie() {
         >
           {<NewChild dataContent={contentReview} />}
         </Tabs.TabPane>
+        {/* <Tabs
+          items={[
+            {
+              key: "1",
+              tab: (
+                <div className="xl:text-xl md:text-xl text-base text-black font-bold">
+                  Điện ảnh 24h
+                </div>
+              ),
+              content: <NewChild dataContent={contentDa24h} />,
+            },
+            {
+              key: "2",
+              tab: (
+                <div className="xl:text-xl md:text-xl text-base text-black font-bold">
+                  Khuyến mãi
+                </div>
+              ),
+              content: <NewChild dataContent={contentKhuyenMai} />,
+            },
+            {
+              key: "3",
+              tab: (
+                <div className="xl:text-xl md:text-xl text-base text-black font-bold">
+                  Đánh giá
+                </div>
+              ),
+              content: <NewChild dataContent={contentReview} />,
+            },
+          ]}
+        /> */}
       </CustomTabs>
     </div>
   );

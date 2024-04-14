@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styleLeft from "./BookTicketLeft.module.css";
+import styleLeft from "./ScreenPageLeft.module.css";
 import { addChairAction } from "../../../redux/movieReducer/movieSlice";
-export default function BookTicketLeft() {
+export default function ScreenPageLeft() {
   let dispatch = useDispatch();
   let {listChair, listChairBook} = useSelector((state) => state.movieReducer);
 

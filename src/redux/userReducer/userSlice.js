@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginThunk } from "./userThunk";
+import { loginThunk, registerThunk } from "./userThunk";
 import { userLocal } from "../../service/userLocal";
 
 const initialState = {
   infoUser: userLocal.get(),
+  errorMessage: ''
 };
 
 const userSlice = createSlice({
@@ -30,7 +31,16 @@ const userSlice = createSlice({
         }
       })
       .addCase(loginThunk.pending, (state, action) => {})
-      .addCase(loginThunk.rejected, (state, action) => {});
+      .addCase(loginThunk.rejected, (state, action) => {})
+      .addCase(registerThunk.fulfilled, (state, action) => {})
+      .addCase(registerThunk.pending, (state, action) => {})
+      .addCase(registerThunk.rejected, (state, action) => {
+        console.log(action.payload)
+        const dataErr = action.payload.response.data.content
+        state.errorMessage = dataErr
+      });
+      
+
   },
   
 });

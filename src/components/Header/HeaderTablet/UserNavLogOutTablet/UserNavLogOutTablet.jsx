@@ -9,7 +9,7 @@ export default function UserNavLogOutTablet() {
     <div className="space-x-4">
       <button
         onClick={() => {
-          navigate("/login");
+          navigate("/auth/login");
         }}
         className=" px-2 py-2  bg-blue-700  text-white hover:text-white hover:py-[0.6rem]    transition rounded-xl"
       >
@@ -19,7 +19,7 @@ export default function UserNavLogOutTablet() {
       </button>
       <button
         onClick={() => {
-          navigate("/register");
+          navigate("/auth/register");
         }}
         className="px-4 py-2   bg-white  text-black  hover:py-[0.6rem] rounded-xl"
       >

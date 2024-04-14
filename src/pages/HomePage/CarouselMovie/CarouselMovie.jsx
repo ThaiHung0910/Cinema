@@ -1,64 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Carousel } from "antd";
-import { movieSer } from "../../../service/movieSer";
+import React, { useRef } from "react";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
-import style from "./carouselMovie.module.css";
+import "./carouselMovie.css";
+import banner1 from "../../../assets/img/carousel/banner1.png";
+import banner2 from "../../../assets/img/carousel/banner2.png";
+import banner3 from "../../../assets/img/carousel/banner3.png";
+import { Carousel } from "antd";
 
 const CarouselMovie = () => {
-  const [dataBan, setDataBan] = useState([]);
   const carouRef = useRef();
-  const fetchBannerMovie = async () => {
-    try {
-      const dataBanner = await movieSer.getBannerMovie();
-      let newDataBanner = dataBanner.data.content;
-      setDataBan(newDataBanner);
-      console.log("newDataBanner: ", newDataBanner); // [{},{},{}]
-    } catch (error) {
-      console.log("error: ", error);
-    }
-  };
 
-
-  useEffect(() => {
-    // Call api
-    fetchBannerMovie();
-  }, []);
+  const movies = [banner1, banner2, banner3];
 
   return (
-    <div className="relative">
-      <Carousel autoplay="true" ref={carouRef}>
-        {/* Map  */}
-
-        {dataBan.map((banner) => {
-          return (
-            <div key={banner.maBanner} className=" w-full">
-              <img
-                style={{
-                  height: "500px",
-                }}
-                className="w-full"
-                src={banner.hinhAnh}
-                alt=""
-              />
-            </div>
-          );
+    <div className="carousel">
+      <Carousel ref={carouRef}>
+        {movies.map((banner) => {
+          return <img className="h-full w-full" src={banner} alt="" />;
         })}
       </Carousel>
       <button
         onClick={() => {
           carouRef.current.next();
         }}
-        className={`rounded mx-3 absolute right-3 top-1/3 ${style.btnCarousel}`}
+        className="rounded mx-3 absolute right-3 top-1/2 btnCarousel"
       >
-        <FaAngleRight className={``}/>
+        <FaAngleRight />
       </button>
       <button
         onClick={() => {
           carouRef.current.prev();
         }}
-        className={`rounded mx-3 absolute left-3 top-1/3 ${style.btnCarousel}`}
+        className="rounded mx-3 absolute left-3 top-1/2 btnCarousel"
       >
-        <FaAngleLeft className={`${style.btnCarousel}`}/>
+        <FaAngleLeft />
       </button>
     </div>
   );

@@ -3,23 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { movieSer } from '../../../service/movieSer';
 import { NavLink } from 'react-router-dom';
 
-const items = [
-  {
-    key: '1',
-    label: 'Tab 1',
-    children: 'Content of Tab Pane 1',
-  },
-  {
-    key: '2',
-    label: 'bc 44',
-    children: 'Content of Tab Pane 2',
-  },
-  {
-    key: '3',
-    label: 'Tab 3',
-    children: 'Content of Tab Pane 3',
-  },
-];
+
 const DetailPageSchedule = ({ idMovie }) => {
   const [dataHeThongRap, setDataHeThongRap] = useState([]);
   const fetchDataSchedule = async () => {
@@ -36,7 +20,7 @@ const DetailPageSchedule = ({ idMovie }) => {
     return dataLichChieuPhim.map((dataLcp, i) => {
       return (
         <NavLink
-          to={`/book-ticket/${dataLcp.maLichChieu}`}
+          to={`/screen/${dataLcp.maLichChieu}`}
           key={i}
           className="border p-2 rounded"
         >
@@ -77,21 +61,6 @@ const DetailPageSchedule = ({ idMovie }) => {
         defaultActiveKey="1"
         items={renderHeThongRap()}
       />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </div>
   );
 };
