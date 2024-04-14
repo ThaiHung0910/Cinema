@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as yup from "yup";
-import {registerThunk } from "../../redux/userReducer/userThunk";
+import { registerThunk } from "../../redux/userReducer/userThunk";
 import { backGroundLogin } from "../../assets/img/js/img";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/img/logo/logo.png";
@@ -23,9 +23,6 @@ const RegisterPage = () => {
     "Không được chứa khoảng trắng và kí tự đặc biệt",
   ];
 
-  
-
-
   const formRegister = useFormik({
     initialValues: {
       taiKhoan: "",
@@ -38,9 +35,9 @@ const RegisterPage = () => {
 
     onSubmit: (value) => {
       let navigateCustom = () => {
-        navigate('/auth/login')
-      }
-      dispatch(registerThunk({ value,  navigateCustom}));
+        navigate("/auth/login");
+      };
+      dispatch(registerThunk({ value, navigateCustom }));
     },
 
     validationSchema: yup.object().shape({
