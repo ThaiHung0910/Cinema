@@ -19,7 +19,6 @@ import Films from "./pages/AdminPage/Films/Films";
 import ScreenPage from "./pages/ScreenPage/ScreenPage";
 import Page404 from "./pages/Page404/Page404";
 import HistoryBooking from "./pages/HistoryBooking/HistoryBooking";
-import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 import UserTemplate from "./templates/UserTemplate";
 
 

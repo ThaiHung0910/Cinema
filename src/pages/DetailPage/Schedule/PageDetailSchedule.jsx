@@ -33,6 +33,10 @@ const CustomTabs = styled(Tabs)`
     top: 50%;
     transform: translateY(-50%);
   }
+  .ant-collapse-icon-position-end>.ant-collapse-item>.ant-collapse-header {
+    padding: 12px 40px 12px 16px;
+    position: relative;
+  }
 `;
 export default function PageDetailSchedule(props) {
   let renderLichChieuPhim = (lichChieuPhim, tenCumRap, diaChiCumRap) => {

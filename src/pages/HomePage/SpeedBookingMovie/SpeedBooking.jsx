@@ -4,6 +4,8 @@ import { movieSer } from "../../../service/movieSer";
 import { MA_NHOM } from "../../../service/urlConfig";
 import Swal from "sweetalert2";
 import style from "./SpeedBooking.module.css";
+import { useMediaQuery } from "react-responsive";
+
 export default function SpeedBooking() {
   let navigate = useNavigate();
   let [dataListMovie, setDataListMovie] = useState([]);
@@ -14,8 +16,7 @@ export default function SpeedBooking() {
   let selectTenPhim = useRef();
   let selectCumRap = useRef();
   let selectLichChieu = useRef();
-
- 
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   let fetchApiListMovie = async () => {
     try {
@@ -34,11 +35,10 @@ export default function SpeedBooking() {
     const soSanh = JSON.stringify(arr1) === JSON.stringify(arr2);
     return soSanh;
   };
-  
+
   //CALL API DATA SHOW TIME
   let fetchApiShowTime = async (maPhim) => {
     try {
-      console.log(maPhim)
       let res = await movieSer.getScheduleMovie(maPhim);
       setThongTinHeThongRapChieu(res.data.content.heThongRapChieu);
     } catch (err) {
@@ -102,7 +102,6 @@ export default function SpeedBooking() {
     });
   };
 
-
   // HANDLE SUBMIT
   let handleSubmit = () => {
     let checkValueLichChieu = selectLichChieu.current.value;
@@ -118,50 +117,54 @@ export default function SpeedBooking() {
       });
     }
   };
-  return (
-    <div className="container mx-auto flex items-center justify-center py-4 xl:t-36 relative">
-      <div className="grid grid-cols-4 xl:w-5/6 xl:p-3 md:p-2 border-blue-400 border shadow-xl rounded bg-white">
-        {/* // RENDER PHIM  */}
-        <div className={` ${style["parents__select"]}`}>
-          <select
-            className={`${style["select"]}`}
-            ref={selectTenPhim}
-            onChange={handleChangeValueNameMovie}
-          >
-            <option disabled={disable} value="0">
-              Chọn tên phim
-            </option>
-            {renderOptionNameMovie()}
-          </select>
-        </div>
-        {/* // RENDER RẠP PHIM  */}
-        <div className={`${style["parents__select"]}`}>
-          <select
-            className={`${style["select"]}`}
-            ref={selectCumRap}
-            onChange={handleChangeValueCumRap}
-          >
-            <option value="0">Chọn cụm rạp</option>
-            {renderOptionCumRap()}
-          </select>
-        </div>
-        {/* // RENDER NGÀY CHIẾU GIỜ CHIẾU */}
-        <div className={`${style["parents__select"]}`}>
-          <select className={`${style["select"]}`} ref={selectLichChieu}>
-            <option value="0">Chọn ngày giờ</option>
-            {renderNgayChieuGioChieu()}
-          </select>
-        </div>
-        {/* // XÁC NHẬN ĐẶT VÉ  */}
-        <div className=" flex items-center justify-center">
-          <button
-            onClick={handleSubmit}
-            className="bg-blue-700 hover:px-4 px-3 py-2 hover:py-3 duration-150 text-white w-2/3 rounded-xl"
-          >
-            ĐẶT VÉ
-          </button>
+  if (!isMobile) {
+    return (
+      <div className="container mx-auto flex items-center justify-center py-4 xl:t-36 relative">
+        <div className="grid grid-cols-4 xl:w-5/6 xl:p-3 md:p-2 border-blue-400 border shadow-xl rounded bg-white">
+          {/* // RENDER PHIM  */}
+          <div className={` ${style["parents__select"]}`}>
+            <select
+              className={`${style["select"]}`}
+              ref={selectTenPhim}
+              onChange={handleChangeValueNameMovie}
+            >
+              <option disabled={disable} value="0">
+                Chọn tên phim
+              </option>
+              {renderOptionNameMovie()}
+            </select>
+          </div>
+          {/* // RENDER RẠP PHIM  */}
+          <div className={`${style["parents__select"]}`}>
+            <select
+              className={`${style["select"]}`}
+              ref={selectCumRap}
+              onChange={handleChangeValueCumRap}
+            >
+              <option value="0">Chọn cụm rạp</option>
+              {renderOptionCumRap()}
+            </select>
+          </div>
+          {/* // RENDER NGÀY CHIẾU GIỜ CHIẾU */}
+          <div className={`${style["parents__select"]}`}>
+            <select className={`${style["select"]}`} ref={selectLichChieu}>
+              <option value="0">Chọn ngày giờ</option>
+              {renderNgayChieuGioChieu()}
+            </select>
+          </div>
+          {/* // XÁC NHẬN ĐẶT VÉ  */}
+          <div className=" flex items-center justify-center">
+            <button
+              onClick={handleSubmit}
+              className="bg-blue-700 hover:px-4 px-3 py-2 hover:py-3 duration-150 text-white w-2/3 rounded-xl"
+            >
+              ĐẶT VÉ
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div></div>;
+  }
 }

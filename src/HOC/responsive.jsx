@@ -6,11 +6,11 @@ export const ResponsiveDesktop = ({children}) => {
 }
 
 export const ResponsiveTablet = ({children}) => {
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279.99 })
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 })
     return isTablet ? children : null;
 }
 
 export const ResponsiveMobile = ({children}) => {
-   const isMobile =  useMediaQuery({ maxWidth: 767.99 })
+   const isMobile =  useMediaQuery({ maxWidth: 767 })
    return isMobile ? children : null;
 }
