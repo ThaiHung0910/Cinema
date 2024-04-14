@@ -22,13 +22,7 @@ export default function UserNavLoginDesktop({ infoUser }) {
   };
   return (
     <div className="flex space-x-5">
-      <div
-        onClick={() => {
-          navigate("/user/info");
-        }}
-        className=" flex items-center space-x-3  text-white cursor-pointer
-       "
-      >
+      <div className=" flex items-center space-x-3  text-white">
         <img
           className=" h-9 w-9 text-xl  bg-[#9E9E9E] rounded-full"
           src={avatarUser}
@@ -38,14 +32,12 @@ export default function UserNavLoginDesktop({ infoUser }) {
           alt=""
         />
         <span className="text-lg">{infoUser.hoTen}</span>
-      </div>
-      <div>
-      <button
-        className="text-2xl  pb-1 text-blue-700 hover:text-blue-300  font-bold "
-        onClick={showDrawer}
-      >
-        <MenuOutlined />
-      </button>
+        <button
+          className="text-2xl  pb-1 text-blue-700 hover:text-blue-300  font-bold relative top-1"
+          onClick={showDrawer}
+        >
+          <MenuOutlined />
+        </button>
       </div>
       <Drawer
         size="default"
@@ -57,7 +49,7 @@ export default function UserNavLoginDesktop({ infoUser }) {
       >
         {/* //Information  */}
         <div className="space-y-1 ">
-          <div className="flex items-center space-x-4 py-3 px-2 hover:bg-[#3A3B3C]  transition rounded-lg">
+          <div className="flex items-center space-x-4 py-3 px-2  transition rounded-lg">
             <img
               className="h-12 w-12  rounded-full"
               src={avatarUser}
@@ -67,10 +59,6 @@ export default function UserNavLoginDesktop({ infoUser }) {
               alt=""
             />
             <div
-              onClick={() => {
-                navigate("/user/info");
-              }}
-              className="cursor-pointer"
             >
               <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
                 {infoUser.hoTen}
