@@ -36,24 +36,3 @@ export const registerThunk = createAsyncThunk(
   }
 );
 
-export const updateThunk = createAsyncThunk(
-  "userReducer/updateThunk",
-  async (payload, { rejectWithValue }) => {
-    try {
-      const data = await userSer.putUpdateInfo(payload);
-      let infoUser = data.data.content;
-      console.log(infoUser)
-
-      message.success("Cập nhật thành công");
-      let updateInfo = await userSer.postLogin({
-        taiKhoan: infoUser.taiKhoan,
-        matKhau: infoUser.matKhau,
-      });
-      userLocal.set(updateInfo.data.content);
-      return updateInfo.data.content;
-    } catch (err) {
-      message.error("Cập nhật thất bại");
-      return rejectWithValue(err);
-    }
-  }
-);

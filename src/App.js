@@ -58,12 +58,11 @@ function App() {
         <Route path="/admin" element={<AdminTemplate />}>
           <Route path="movies" element={<Films />} />
           <Route path="addMovies" element={<AddFlims />} />
-
+        </Route>
 
         {/* User Info */}
         <Route path="user" element={<UserTemplate />}>
           <Route path="history" element={<HistoryBooking />} />
-          {/* <Route path="info" element={<UserInfoPage />} /> */}
         </Route>
       </Routes>
 

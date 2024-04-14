@@ -24,43 +24,45 @@ export default function MovieTabItem({ maHeThongRap }) {
     featchApi({ maHeThongRap });
   }, [maHeThongRap]);
   let renderLichChieuPhim = (danhSachPhim, tenCumRap, diaChi) => {
-    return danhSachPhim.map((phim) => {
-      return (
-        <MovieTabItemChild
-          dataPhim={phim}
-          tenCumRap={tenCumRap}
-          diaChi={diaChi}
-          key={phim.maPhim}
-        />
-      );
-    });
+    return (
+      <div style={{height: '35rem', overflow: 'auto' }}>
+        {danhSachPhim.map((phim) => {
+          return (
+            <MovieTabItemChild
+              dataPhim={phim}
+              tenCumRap={tenCumRap}
+              diaChi={diaChi}
+              key={phim.maPhim}
+            />
+          );
+        })}
+      </div>
+    );
+  };
+
+  let renderCumRap = (cumrap) => {
+    return <div className="w-64  text-center border-b">{cumrap.tenCumRap}</div>;
   };
   let renderTheater = () => {
-    return dataTheater.lstCumRap?.map((cumrap) => {
-      return (
-        <Tabs.TabPane
-          style={{ height: "35rem"}}
-          tab={
-            <div className="w-64  text-left border-b">{cumrap.tenCumRap}</div>
-          }
-          key={cumrap.maCumRap}
-        >
-          <div className="h-full overflow-auto">
-            {renderLichChieuPhim(
-              cumrap.danhSachPhim,
-              cumrap.tenCumRap,
-              cumrap.diaChi
-            )}
-          </div>
-        </Tabs.TabPane>
-      );
+    return dataTheater.lstCumRap?.map((cumrap, i) => {
+      return {
+        key: i,
+        label: renderCumRap(cumrap),
+        children: renderLichChieuPhim(
+          cumrap.danhSachPhim,
+          cumrap.tenCumRap,
+          cumrap.diaChi
+        ),
+      };
     });
   };
   return (
-    <Tabs className=" w-full xl:h-[38rem] md:h-[40rem] h-[40rem]"  centered
-    tabPosition={isDesktop ? "left" : "top"}
-    defaultActiveKey="BHD Star Cineplex - Bitexco">
-      {renderTheater()}{" "}
-    </Tabs>
+    <Tabs
+      className=" w-full xl:h-[38rem] md:h-[40rem] h-[40rem]"
+      centered
+      tabPosition={isDesktop ? "left" : "top"}
+      defaultActiveKey="BHD Star Cineplex - Bitexco"
+      items={renderTheater()}
+    />
   );
 }

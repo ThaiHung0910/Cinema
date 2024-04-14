@@ -14,8 +14,8 @@ const CarouselMovie = () => {
   return (
     <div className="carousel">
       <Carousel ref={carouRef}>
-        {movies.map((banner) => {
-          return <img className="h-full w-full" src={banner} alt="" />;
+        {movies.map((banner, id) => {
+          return <img key={id} className="h-full w-full" src={banner} alt="" />;
         })}
       </Carousel>
       <button

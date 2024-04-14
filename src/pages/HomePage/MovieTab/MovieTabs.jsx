@@ -32,22 +32,28 @@ export default function MovieTabs() {
   useEffect(() => {
     fetchApi();
   }, []);
+
+  let renderHeThongRap = (heThongRap) => {
+    return <MovieTabItem maHeThongRap={heThongRap.maHeThongRap} />;
+  };
+
+  let renderLogo = (heThongRap) => {
+    return (
+      <img
+        src={heThongRap.logo}
+        className="xl:w-10 xl:h-10 md:h-10 md:w-10 w-10 h-10 md:mx-8"
+        alt=""
+      />
+    );
+  };
+
   let renderMovieTab = () => {
     return dataMovieTab.map((heThongRap, index) => {
-      return (
-        <Tabs.TabPane
-          key={index}
-          tab={
-            <img
-              src={heThongRap.logo}
-              className="xl:w-10 xl:h-10 md:h-10 md:w-10 w-10 h-10 md:mx-8"
-              alt=""
-            />
-          }
-        >
-          <MovieTabItem maHeThongRap={heThongRap.maHeThongRap} />
-        </Tabs.TabPane>
-      );
+      return {
+        key: index,
+        label: renderLogo(heThongRap),
+        children: renderHeThongRap(heThongRap),
+      };
     });
   };
   return (
@@ -66,9 +72,8 @@ export default function MovieTabs() {
         tabPosition="top"
         centered={window.innerWidth > 1279 ? false : true}
         defaultActiveKey="BHDStar"
-      >
-        {renderMovieTab()}
-      </CustomTabs>
+        items={renderMovieTab()}
+      />
     </div>
   );
 }

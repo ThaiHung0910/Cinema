@@ -1,7 +1,6 @@
 import React from "react";
 import ButtonBookingTicket from "../../../../../components/Booking/ButtonBookingTicket";
 
-
 export default function MovieTabItemChild(props) {
   let renderMovieSchedule = () => {
     return (
@@ -44,7 +43,9 @@ export default function MovieTabItemChild(props) {
             />
           </div>
         </div>
-        <div className="xl:col-span-2 md:col-span-2">{renderMovieSchedule()}</div>
+        <div className="xl:col-span-2 md:col-span-2">
+          {renderMovieSchedule()}
+        </div>
       </div>
     );
   };
