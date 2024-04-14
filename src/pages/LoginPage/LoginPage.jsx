@@ -18,6 +18,7 @@ const LoginPage = () => {
     initialValues: {
       taiKhoan: "",
       matKhau: "",
+      isLogin: true
     },
     onSubmit: (value) => {
       const navigateCus = () => {

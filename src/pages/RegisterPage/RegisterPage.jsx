@@ -12,6 +12,7 @@ import FormInputCustom from "../../components/Input/FormInputCustom";
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const message = [
     "Vui lòng điền thông tin",
     "Tối thiểu bốn ký tự",
@@ -31,13 +32,16 @@ const RegisterPage = () => {
       soDt: "",
       maNhom: "",
       hoTen: "",
+      isRegister: true
     },
 
     onSubmit: (value) => {
+      formRegister.values.isRegister = true
       let navigateCustom = () => {
         navigate("/auth/login");
       };
       dispatch(registerThunk({ value, navigateCustom }));
+
     },
 
     validationSchema: yup.object().shape({

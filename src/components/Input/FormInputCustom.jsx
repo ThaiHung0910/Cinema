@@ -3,23 +3,31 @@ import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { userSer } from "../../service/userSer";
 import { useSelector } from "react-redux";
 
-function FormInputCustom({ name, label, type, disable, formikField }) {
+function FormInputCustom({ name, label, type, disable, formikField, isLogin }) {
   let [translateLabel, setTranslateLabel] = useState(true);
   let [inputType, setInputType] = useState(true);
+  let existValue = ''
   const { values, touched, errors, handleChange, handleBlur } = formikField;
   let value = values[name];
-  const { errorMessage } = useSelector((state) => state.userReducer);
-
+  let { errorMessage } = useSelector((state) => state.userReducer);
   if (errorMessage) {
-    if (errorMessage.includes(label)) {
-      errors[name] = errorMessage;
+    if(formikField.values.isLogin) {
+      errors[name] = ''
     }
+    if(formikField.values.isRegister) {
+      if (errorMessage.includes(label)) {
+        errors[name] = errorMessage;
+        existValue = value
+      }
+    }
+    
   }
 
   useEffect(() => {
     if (value) {
       setTranslateLabel(false);
     }
+    
   }, [value]);
 
   return (
@@ -47,7 +55,14 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
             setTranslateLabel(!translateLabel);
           }
         }}
-        onBlur={handleBlur}
+        onBlur={(e) => {
+          if(existValue != e.target.value) {
+            errors[name] = ''
+            errorMessage = ''
+            formikField.values.isRegister = false
+          }
+          handleBlur(e)
+        }}
       />
 
       <div className="xl:h-6 md:h-4 h-2 xl:text-base md:text-sm text-xs text-orange-500">
