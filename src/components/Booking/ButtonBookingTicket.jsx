@@ -145,7 +145,7 @@ export default function ButtonBookingTicket(props) {
             </p>
             <button
               onClick={() => {
-                navigate("/login");
+                navigate("/auth/login");
               }}
               className="w-full py-3 text-lg bg-blue-700 hover:bg-blue-800 text-white hover:text-white rounded duration-150"
             >

@@ -13,7 +13,7 @@ const CarouselMovie = () => {
 
   return (
     <div className="carousel">
-      <Carousel ref={carouRef}>
+      <Carousel autoplay ref={carouRef}>
         {movies.map((banner, id) => {
           return <img key={id} className="h-full w-full" src={banner} alt="" />;
         })}
