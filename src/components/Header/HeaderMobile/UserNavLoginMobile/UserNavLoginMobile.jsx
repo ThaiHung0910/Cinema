@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   HistoryOutlined,
   MenuOutlined,
@@ -9,9 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { Drawer } from "antd";
 import { logOutAction } from "../../../../redux/userReducer/userSlice";
 import { avatarUser, imageNotFound } from "../../../../assets/img/js/img";
-
-
-
 
 export default function UserNavLoginMobile({ infoUser }) {
   let dispatch = useDispatch();
@@ -37,7 +34,7 @@ export default function UserNavLoginMobile({ infoUser }) {
         closable={false}
         onClose={onClose}
         open={open}
-        styles={{content: { backgroundColor: "#18191A" }}}
+        styles={{ content: { backgroundColor: "#18191A" } }}
       >
         {/* //Information  */}
         <div className="space-y-1 ">
@@ -50,16 +47,8 @@ export default function UserNavLoginMobile({ infoUser }) {
               }}
               alt=""
             />
-            <div
-              onClick={() => {
-                navigate("/user/info");
-              }}
-              className="cursor-pointer"
-            >
-              <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
-                {infoUser.hoTen}
-              </div>
-              <div className="text-[#ACAFB4]">Xem thông tin cá nhân</div>
+            <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
+              {infoUser.hoTen}
             </div>
           </div>
           <hr className=" bg-gray-300" />

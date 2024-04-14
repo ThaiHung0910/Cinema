@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   HistoryOutlined,
   MenuOutlined,
@@ -9,8 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { Drawer } from "antd";
 import { logOutAction } from "../../../../redux/userReducer/userSlice";
 import { avatarUser, imageNotFound } from "../../../../assets/img/js/img";
-
-
 
 export default function UserNavLoginTablet({ infoUser }) {
   let dispatch = useDispatch();
@@ -25,10 +23,7 @@ export default function UserNavLoginTablet({ infoUser }) {
   return (
     <div className="flex items-end space-x-5">
       <div
-        onClick={() => {
-          navigate("/user/info");
-        }}
-        className=" flex items-end space-x-3  text-white cursor-pointer
+        className=" flex items-end space-x-3  text-white
        "
       >
         <img
@@ -39,14 +34,15 @@ export default function UserNavLoginTablet({ infoUser }) {
           }}
           alt=""
         />
-        <span className="text-lg">{infoUser.hoTen}</span>
+        <span className="text-lg relative bot-1 ">{infoUser.hoTen}</span>
+
+        <button
+          className="text-2xl  pb-1 text-blue-700 hover:text-blue-800  font-bold relative top-1 "
+          onClick={showDrawer}
+        >
+          <MenuOutlined />
+        </button>
       </div>
-      <button
-        className="text-2xl  pb-1 text-blue-700 hover:text-blue-800  font-bold "
-        onClick={showDrawer}
-      >
-        <MenuOutlined />
-      </button>
       <Drawer
         size="default"
         placement="left"
@@ -57,22 +53,11 @@ export default function UserNavLoginTablet({ infoUser }) {
       >
         {/* //Information  */}
         <div className="space-y-1 ">
-          <div className="flex items-center space-x-4 py-3 px-2 hover:bg-[#3A3B3C]  transition rounded-lg">
-            <img
-              className="h-12 w-12  rounded-full"
-              src={avatarUser}
-              alt=""
-            />
-            <div
-              onClick={() => {
-                navigate("/user/info");
-              }}
-              className="cursor-pointer"
-            >
-              <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
-                {infoUser.hoTen}
-              </div>
-              <div className="text-[#ACAFB4]">Xem thông tin cá nhân</div>
+          <div className="flex items-center space-x-4 py-3 px-2  transition rounded-lg">
+            <img className="h-12 w-12  rounded-full" src={avatarUser} alt="" />
+
+            <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
+              {infoUser.hoTen}
             </div>
           </div>
           <hr className=" bg-gray-300" />
@@ -89,7 +74,7 @@ export default function UserNavLoginTablet({ infoUser }) {
         </div>
         {/* // LogOut  */}
         <div
-           onClick={() => {
+          onClick={() => {
             dispatch(logOutAction());
           }}
           className="flex items-center space-x-2 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
