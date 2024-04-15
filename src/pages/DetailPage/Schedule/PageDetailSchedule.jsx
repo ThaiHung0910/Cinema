@@ -1,5 +1,5 @@
 import { Tabs, Collapse, Rate } from "antd";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Lottie from "lottie-react";
 import cat_comment from "../../../assets/json/cat_comment.json";
@@ -30,10 +30,10 @@ const CustomTabs = styled(Tabs)`
     margin: 0;
     position: absolute;
     right: 16px;
-    top: 50%;
+    top: 57%;
     transform: translateY(-50%);
   }
-  .ant-collapse-icon-position-end>.ant-collapse-item>.ant-collapse-header {
+  .ant-collapse-icon-position-end > .ant-collapse-item > .ant-collapse-header {
     padding: 12px 40px 12px 16px;
     position: relative;
   }
@@ -55,6 +55,21 @@ export default function PageDetailSchedule(props) {
       );
     });
   };
+
+  let renderCumRapChieu = (cumRapChieu) => {
+    return cumRapChieu?.map((cumRap, index) => {
+      return (
+        <div key={index} className="h-full overflow-auto">
+          {renderLichChieuPhim(
+            cumRap.lichChieuPhim,
+            cumRap.tenCumRap,
+            cumRap.diaChi
+          )}
+        </div>
+      );
+    });
+  };
+
   // RENDER THEATER ============================
   let renderTheater = (cumRapChieu, logo) => {
     return cumRapChieu?.map((cumRap) => {
@@ -79,15 +94,7 @@ export default function PageDetailSchedule(props) {
             </div>
           }
           key={cumRap.maCumRap}
-        >
-          <div className="h-full overflow-auto">
-            {renderLichChieuPhim(
-              cumRap.lichChieuPhim,
-              cumRap.tenCumRap,
-              cumRap.diaChi
-            )}
-          </div>
-        </Panel>
+        />
       );
     });
   };
@@ -95,29 +102,33 @@ export default function PageDetailSchedule(props) {
   let renderContent = () => {
     if (props.showTime.heThongRapChieu.length !== 0) {
       return props.showTime.heThongRapChieu?.map((heThongRap) => {
-        return (
-          <Tabs.TabPane
-            tab={
-              <div className=" xl:p-2 md:p-2 p-2 border border-gray-400 rounded-lg ">
-                <img
-                  className="xl:w-8 md:w-8 w-6  xl:h-8 md:h-8 h-6"
-                  src={heThongRap.logo}
-                  alt=""
-                />
-              </div>
-            }
-            key={heThongRap.maHeThongRap}
-          >
+        return {
+          key: heThongRap.maHeThongRap,
+          label: (
+            <div className=" xl:p-2 md:p-2 p-2 border border-gray-400 rounded-lg ">
+              <img
+                className="xl:w-8 md:w-8 w-6  xl:h-8 md:h-8 h-6"
+                src={heThongRap.logo}
+                alt=""
+              />
+            </div>
+          ),
+          children: (
             <Collapse
               accordion
               expandIconPosition="end"
               className="xl:h-[28rem] md:h-96"
               defaultActiveKey="1"
-            >
-              {renderTheater(heThongRap.cumRapChieu, heThongRap.logo)}
-            </Collapse>
-          </Tabs.TabPane>
-        );
+              items={[
+                {
+                  key: 1,
+                  label: renderTheater(heThongRap.cumRapChieu, heThongRap.logo),
+                  children: renderCumRapChieu(heThongRap.cumRapChieu),
+                },
+              ]}
+            />
+          ),
+        };
       });
     } else {
       return (
@@ -150,9 +161,8 @@ export default function PageDetailSchedule(props) {
                 }}
                 tabPosition="top"
                 defaultActiveKey="BHDStar"
-              >
-                {renderContent()}
-              </CustomTabs>
+                items={renderContent()}
+              />
             </div>
             {/* // CARD ĐÁNH GIÁ  ==================================== */}
             <div className="xl:w-1/3 md:w-1/3 w-full">

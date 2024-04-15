@@ -33,26 +33,19 @@ export default function MovieTabs() {
     fetchApi();
   }, []);
 
-  let renderHeThongRap = (heThongRap) => {
-    return <MovieTabItem maHeThongRap={heThongRap.maHeThongRap} />;
-  };
-
-  let renderLogo = (heThongRap) => {
-    return (
-      <img
-        src={heThongRap.logo}
-        className="xl:w-10 xl:h-10 md:h-10 md:w-10 w-10 h-10 md:mx-8"
-        alt=""
-      />
-    );
-  };
 
   let renderMovieTab = () => {
     return dataMovieTab.map((heThongRap, index) => {
       return {
         key: index,
-        label: renderLogo(heThongRap),
-        children: renderHeThongRap(heThongRap),
+        label: (
+          <img
+            src={heThongRap.logo}
+            className="xl:w-10 xl:h-10 md:h-10 md:w-10 w-10 h-10 md:mx-8"
+            alt=""
+          />
+        ),
+        children: <MovieTabItem maHeThongRap={heThongRap.maHeThongRap} />,
       };
     });
   };

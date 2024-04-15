@@ -25,7 +25,7 @@ export default function MovieTabItem({ maHeThongRap }) {
   }, [maHeThongRap]);
   let renderLichChieuPhim = (danhSachPhim, tenCumRap, diaChi) => {
     return (
-      <div style={{height: '35rem', overflow: 'auto' }}>
+      <div style={{ height: "35rem", overflow: "auto" }}>
         {danhSachPhim.map((phim) => {
           return (
             <MovieTabItemChild
@@ -40,14 +40,13 @@ export default function MovieTabItem({ maHeThongRap }) {
     );
   };
 
-  let renderCumRap = (cumrap) => {
-    return <div className="w-64  text-center border-b">{cumrap.tenCumRap}</div>;
-  };
   let renderTheater = () => {
     return dataTheater.lstCumRap?.map((cumrap, i) => {
       return {
         key: i,
-        label: renderCumRap(cumrap),
+        label: (
+          <div className="w-64  text-center border-b">{cumrap.tenCumRap}</div>
+        ),
         children: renderLichChieuPhim(
           cumrap.danhSachPhim,
           cumrap.tenCumRap,

@@ -5,7 +5,6 @@ import PageDetailVideo from "./Video/PageDetailVideo";
 import { movieSer } from "../../service/movieSer";
 import { backGroundLogin } from "../../assets/img/js/img";
 
-
 export default function DetailPage() {
   let scrollRefMuaVe = useRef();
   let { idMovie } = useParams();
@@ -34,15 +33,17 @@ export default function DetailPage() {
   };
   let readMore = (content) => {
     return (
-      <p className="text">
-        {isReadMore ? content.slice(0, 300) : content}
+      <>
+        <span className="text">
+          {isReadMore ? content.slice(0, 300) : content}
+        </span>
         <span
           onClick={toggleReadMore}
           className="cursor-pointer text-slate-300 font-bold"
         >
           {isReadMore ? "...Xem thêm" : " Ẩn bớt"}
         </span>
-      </p>
+      </>
     );
   };
   console.log("dataMovieDetail: ", dataMovieDetail);
