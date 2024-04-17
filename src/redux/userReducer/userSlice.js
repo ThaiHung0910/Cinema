@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginThunk, registerThunk } from "./userThunk";
-import { userLocal } from "../../service/userLocal";
+import { userLocal } from "../../service/localService";
 
 const initialState = {
   infoUser: userLocal.get(),
@@ -17,6 +17,9 @@ const userSlice = createSlice({
       // xoá localstorage
       userLocal.delete();
     },
+    resetErrorMessage: (state,action) => {
+      state.errorMessage = ''
+    }
   },
   //   Xử lý action bất đồng bộ
   extraReducers: (builder) => {
@@ -45,6 +48,6 @@ const userSlice = createSlice({
   
 });
 
-export const { logOutAction } = userSlice.actions;
+export const { logOutAction, resetErrorMessage } = userSlice.actions;
 
 export default userSlice.reducer;

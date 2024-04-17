@@ -1,34 +1,58 @@
 import React, { memo, useEffect, useState } from "react";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { userSer } from "../../service/userSer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { resetErrorMessage } from "../../redux/userReducer/userSlice";
+import { isValueInArray } from "../../utils";
 
-function FormInputCustom({ name, label, type, disable, formikField, isLogin }) {
+
+
+function FormInputCustom({ name, label, type, disable, formikField }) {
   let [translateLabel, setTranslateLabel] = useState(true);
   let [inputType, setInputType] = useState(true);
-  let existValue = ''
+  let [focusedInput, setFocusedInput] = useState(false);
+  let [errorFromApi, setErrorFromApi] = useState("");
+  let [duplicateErrors, setDuplicateErrors] = useState({
+    taiKhoan: { value: [], error: "" },
+    email: { value: [], error: "" },
+  });
   const { values, touched, errors, handleChange, handleBlur } = formikField;
   let value = values[name];
   let { errorMessage } = useSelector((state) => state.userReducer);
-  if (errorMessage) {
-    if(formikField.values.isLogin) {
-      errors[name] = ''
+  let dispatch = useDispatch();
+
+  let handleFocusCustom = () => {
+    setFocusedInput(true);
+  };
+  let handleBlurCustom = () => {
+    setFocusedInput(false);
+  };
+
+  // Xử lý khi có lỗi trả về từ API
+  if (!formikField.values.isLogin) {
+    if (errorFromApi) {
+      errors[name] = errorFromApi;
     }
-    if(formikField.values.isRegister) {
-      if (errorMessage.includes(label)) {
-        errors[name] = errorMessage;
-        existValue = value
-      }
-    }
-    
   }
 
   useEffect(() => {
     if (value) {
       setTranslateLabel(false);
     }
-    
-  }, [value]);
+    if (errorMessage.includes(label)) {
+      setErrorFromApi(errorMessage);
+      const isDuplicate = isValueInArray(value, duplicateErrors[name]?.value);
+
+      setDuplicateErrors({
+        ...duplicateErrors,
+        [name]: {
+          value: !isDuplicate ? [...duplicateErrors[name]?.value, value] : [...duplicateErrors[name]?.value],
+          error: errorMessage,
+        },
+      });
+      dispatch(resetErrorMessage());
+    }
+  }, [value, errorMessage]);
 
   return (
     <div className="relative">
@@ -49,24 +73,26 @@ function FormInputCustom({ name, label, type, disable, formikField, isLogin }) {
         }`}
         name={name}
         value={value}
-        onChange={handleChange}
+        onChange={(e) => {
+          handleChange(e);
+          const isDuplicate = isValueInArray(e.target.value, duplicateErrors[name]?.value);
+          setErrorFromApi(isDuplicate ? duplicateErrors[name]?.error : "");
+        }}
         onFocus={() => {
           if (!value) {
             setTranslateLabel(!translateLabel);
           }
+          handleFocusCustom();
         }}
         onBlur={(e) => {
-          if(existValue != e.target.value) {
-            errors[name] = ''
-            errorMessage = ''
-            formikField.values.isRegister = false
-          }
-          handleBlur(e)
+          handleBlurCustom();
+          console.log(duplicateErrors)
+          handleBlur(e);
         }}
       />
 
       <div className="xl:h-6 md:h-4 h-2 xl:text-base md:text-sm text-xs text-orange-500">
-        {touched[name] && errors[name] ? errors[name] : ""}
+        {(focusedInput || touched[name]) && errors[name] ? errors[name] : ""}
       </div>
 
       {type === "password" ? (

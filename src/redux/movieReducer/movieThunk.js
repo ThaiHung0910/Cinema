@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { movieSer } from "../../service/movieSer";
-import Swal from "sweetalert2";
+import { swalCustom } from "../../utils";
 
 export const getListChairThunk = createAsyncThunk(
   "movieReducer/getListChairThunk",
@@ -24,12 +24,7 @@ export const sendDataListBookingChairThunk = createAsyncThunk(
       // /// DISPATCH LẠI
       
       setTimeout(() => {
-        Swal.fire({
-          icon: "success",
-          title: "Đặt vé thành công",
-          showConfirmButton: false,
-          timer: 1000,
-        });
+        swalCustom("success", "Đặt vé thành công", 1000)
       }, 500);
       // Chuyển trang
       payload.navigateCustom();

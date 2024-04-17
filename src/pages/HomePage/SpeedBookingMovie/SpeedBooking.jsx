@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { movieSer } from "../../../service/movieSer";
 import { MA_NHOM } from "../../../service/urlConfig";
-import Swal from "sweetalert2";
 import style from "./SpeedBooking.module.css";
 import { useMediaQuery } from "react-responsive";
+import { swalCustom } from "../../../utils";
+
+
 
 export default function SpeedBooking() {
   let navigate = useNavigate();
@@ -109,12 +111,7 @@ export default function SpeedBooking() {
     if (checkValueCumRap != 0 && checkValueLichChieu != 0) {
       navigate(`/screen/${checkValueLichChieu}`);
     } else {
-      Swal.fire({
-        icon: "error",
-        title: "Vui lòng chọn đủ thông tin",
-        showConfirmButton: false,
-        timer: 1000,
-      });
+      swalCustom('error', "Vui lòng chọn đủ thông tin", 1000)
     }
   };
   if (!isMobile) {

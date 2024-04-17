@@ -1,10 +1,10 @@
 import React from "react";
-import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./ScreePageRight.module.css";
 import { maVach } from "../../../assets/img/js/img";
 import { useNavigate } from "react-router-dom";
 import { sendDataListBookingChairThunk } from "../../../redux/movieReducer/movieThunk";
+import { swalCustom } from "../../../utils";
 
 export default function ScreePageRight() {
   let dispatch = useDispatch();
@@ -35,12 +35,7 @@ export default function ScreePageRight() {
       dispatch(sendDataListBookingChairThunk({dataListBookingChair, navigateCustom}))
     } else {
       setTimeout(() => {
-        Swal.fire({
-          icon: "error",
-          title: "Đặt thất bại, bạn chưa chọn ghế",
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        swalCustom("error", "Đặt thất bại, bạn chưa chọn ghế", 2000)
       }, 500);
     }
   };

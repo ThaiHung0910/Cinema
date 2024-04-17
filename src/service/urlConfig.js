@@ -4,7 +4,7 @@ import {
   turnOffLoading,
   turnOnLoading,
 } from '../redux/loadingReducer/loadingSlice';
-import { userLocal } from './userLocal';
+import { userLocal } from './localService';
 
 export const BASE_URL = 'https://movienew.cybersoft.edu.vn';
 

@@ -9,6 +9,7 @@ import logo from "../../assets/img/logo/logo.png";
 import FormInputCustom from "../../components/Input/FormInputCustom";
 
 
+
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,13 +36,14 @@ const RegisterPage = () => {
       isRegister: true
     },
 
+    
+
     onSubmit: (value) => {
       formRegister.values.isRegister = true
       let navigateCustom = () => {
         navigate("/auth/login");
       };
       dispatch(registerThunk({ value, navigateCustom }));
-
     },
 
     validationSchema: yup.object().shape({
@@ -89,13 +91,12 @@ const RegisterPage = () => {
         onClick={() => {
           navigate("/");
         }}
-        className="absolute  top-5 left-5  xl:text-5xl md:text-3xl text-4xl text-blue-300 font-extrabold cursor-pointer opacity-70"
+        className="absolute  top-5 left-5  xl:text-5xl md:text-2xl text-2xl text-blue-300 font-extrabold cursor-pointer opacity-70"
       >
         <div
           className="flex justify-between items-center"
-          style={{ width: "90px", height: "auto" }}
         >
-          <img src={logo} className="w-20 h-20" alt="" />
+          <img src={logo} className="md:w-16 w-7" alt="" />
           <span>Cinema</span>
         </div>
       </div>
@@ -141,12 +142,17 @@ const RegisterPage = () => {
               label="Họ Tên"
               formikField={formRegister}
             />
+
+
+
             <button
               type="submit"
               className=" xl:w-full md:w-full w-full  xl:text-lg md:text-lg text-lg   xl:px-4 md:px-4 px-3 xl:py-4 md:py-4 py-2 text-white hover:text-white  bg-blue-700  hover:bg-blue-800  transition rounded-xl"
             >
               Đăng ký
             </button>
+
+
 
             <div className=" text-right  xl:px-5 md:px-5 px-0 xl:text-base md:text-base text-xs text-gray-400">
               Bạn đã có tài khoản?{" "}

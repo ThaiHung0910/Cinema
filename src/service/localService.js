@@ -1,10 +1,11 @@
+const USER_INFO = "USER_INFO"
 export const userLocal = {
   set: (infoUser) => {
     let json = JSON.stringify(infoUser);
-    localStorage.setItem('USER_INFO', json);
+    localStorage.setItem(USER_INFO, json);
   },
   get: () => {
-    let json = localStorage.getItem('USER_INFO');
+    let json = localStorage.getItem(USER_INFO);
     if (json) {
       return JSON.parse(json);
     } else {
@@ -12,6 +13,6 @@ export const userLocal = {
     }
   },
   delete: () => {
-    localStorage.removeItem('USER_INFO');
+    localStorage.removeItem(USER_INFO);
   },
 };

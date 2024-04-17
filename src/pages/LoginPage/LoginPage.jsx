@@ -52,7 +52,6 @@ const LoginPage = () => {
       >
         <div
           className="flex justify-between items-center"
-          style={{ width: "90px", height: "auto" }}
         >
           <img src={logo} className="w-16 h-16" alt="" />
           <span>Cinema</span>

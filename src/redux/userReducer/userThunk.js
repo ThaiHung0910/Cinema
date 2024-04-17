@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { message } from "antd";
 import { userSer } from "../../service/userSer";
-import { userLocal } from "../../service/userLocal";
+import { userLocal } from "../../service/localService";
 
 export const loginThunk = createAsyncThunk(
   "userReducer/loginThunk",
@@ -14,7 +14,7 @@ export const loginThunk = createAsyncThunk(
       message.success("Đăng nhập thành công");
       return infoUser;
     } catch (error) {
-      message.error("Đăng nhập thất bại");
+      message.error("Tài khoản hoặc mật khẩu không đúng");
       return rejectWithValue(error);
     }
   }

@@ -3,7 +3,7 @@ import React, {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { backGroundLogin } from "../../assets/img/js/img";
-import Swal from "sweetalert2";
+import { swalCustom } from "../../utils";
 
 export default function ButtonBookingTicket(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,12 +37,7 @@ export default function ButtonBookingTicket(props) {
       window.location.href = `/screen/${props.maLichChieu}`;
     } else {
       navigate("/auth/login");
-      Swal.fire({
-        icon: "error",
-        title: "Vui lòng đăng nhập để được mua vé",
-        showConfirmButton: false,
-        timer: 2000,
-      });
+      swalCustom('error', "Vui lòng đăng nhập để được mua vé", 2000)
     }
   };
 
