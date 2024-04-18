@@ -13,10 +13,12 @@ export const MA_NHOM = 'GP09';
 export const TOKEN_CYBER =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCA2NCIsIkhldEhhblN0cmluZyI6IjA4LzA5LzIwNTQiLCJIZXRIYW5UaW1lIjoiMTgyNTc1MzYwMDAwMCIsIm5iZiI6MTY5NTkyMDQwMCwiZXhwIjoxNzI1OTAxMjAwfQ.XLHg-hNTodOsN6aJbzkEOhntH6Bq2GMv2BTVxwDfqCA';
 
-export const configHeader = () => {
+  
+  export const configHeader = () => {
+  const accessToken = userLocal.get()?.accessToken;
   return {
     TokenCybersoft: TOKEN_CYBER,
-    Authorization: 'Bearer ' + userLocal.get()?.accessToken,
+    Authorization: `Bearer ${accessToken}`
   };
 };
 
@@ -30,10 +32,19 @@ export const http = axios.create({
 // Add a request interceptor
 http.interceptors.request.use(
   function (config) {
-    // Do something before request is sent
-    store.dispatch(turnOnLoading());
+     // Do something before request is sent
+    let newConfig = {
+      ...config,
+      headers: {
+        ...config.headers,
+        Authorization: 'Bearer ' + userLocal.get()?.accessToken,
+      },
+    };
+
+    
     // Bật loading khi bắt đầu gửi request
-    return config;
+    store.dispatch(turnOnLoading());
+    return newConfig;
   },
   function (error) {
     // Do something with request error

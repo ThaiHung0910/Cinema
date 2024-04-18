@@ -26,7 +26,6 @@ export const sendDataListBookingChairThunk = createAsyncThunk(
       setTimeout(() => {
         swalCustom("success", "Đặt vé thành công", 1000)
       }, 500);
-      // Chuyển trang
       payload.navigateCustom();
       return data.data.content;
     } catch (error) {

@@ -47,8 +47,16 @@ export default function UserNavLoginMobile({ infoUser }) {
               }}
               alt=""
             />
-            <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
-              {infoUser.hoTen}
+            <div
+              onClick={() => {
+                navigate("/user/info");
+              }}
+              className="cursor-pointer"
+            >
+              <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
+                {infoUser.hoTen}
+              </div>
+              <div className="text-[#ACAFB4]">Xem thông tin cá nhân</div>
             </div>
           </div>
           <hr className=" bg-gray-300" />

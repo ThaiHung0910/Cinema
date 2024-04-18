@@ -1,4 +1,4 @@
-const USER_INFO = "USER_INFO"
+const USER_INFO = "USER_INFO", DUPLICATE_VALUE = "DUPLICATE_VALUE"
 export const userLocal = {
   set: (infoUser) => {
     let json = JSON.stringify(infoUser);
@@ -16,3 +16,18 @@ export const userLocal = {
     localStorage.removeItem(USER_INFO);
   },
 };
+
+export const duplicateLocal = {
+  set: (value) => {
+    let json = JSON.stringify(value);
+    localStorage.setItem(DUPLICATE_VALUE, json);
+  },
+  get: () => {
+    let json = localStorage.getItem(DUPLICATE_VALUE);
+    if (json) {
+      return JSON.parse(json);
+    } else {
+      return null;
+    }
+  },
+}

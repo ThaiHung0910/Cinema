@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginThunk, registerThunk } from "./userThunk";
+import { loginThunk, registerThunk, updateThunk } from "./userThunk";
 import { userLocal } from "../../service/localService";
 
 const initialState = {
   infoUser: userLocal.get(),
-  errorMessage: ''
+  errorMessage: "",
 };
 
 const userSlice = createSlice({
@@ -17,9 +17,9 @@ const userSlice = createSlice({
       // xoá localstorage
       userLocal.delete();
     },
-    resetErrorMessage: (state,action) => {
-      state.errorMessage = ''
-    }
+    resetErrorMessage: (state, action) => {
+      state.errorMessage = "";
+    },
   },
   //   Xử lý action bất đồng bộ
   extraReducers: (builder) => {
@@ -27,25 +27,24 @@ const userSlice = createSlice({
     builder
       .addCase(loginThunk.fulfilled, (state, action) => {
         if (action.payload) {
-
           state.infoUser = action.payload;
           //Lưu info user xuống localstorage
           userLocal.set(action.payload);
         }
       })
-      .addCase(loginThunk.pending, (state, action) => {})
-      .addCase(loginThunk.rejected, (state, action) => {})
-      .addCase(registerThunk.fulfilled, (state, action) => {})
-      .addCase(registerThunk.pending, (state, action) => {})
       .addCase(registerThunk.rejected, (state, action) => {
-        console.log(action.payload)
-        const dataErr = action.payload.response.data.content
-        state.errorMessage = dataErr
+        console.log(action.payload);
+        const dataErr = action.payload.response.data.content;
+        state.errorMessage = dataErr;
+      })
+      .addCase(updateThunk.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.infoUser = action.payload;
+          //Lưu info user xuống localstorage
+          userLocal.set(action.payload);
+        }
       });
-      
-
   },
-  
 });
 
 export const { logOutAction, resetErrorMessage } = userSlice.actions;

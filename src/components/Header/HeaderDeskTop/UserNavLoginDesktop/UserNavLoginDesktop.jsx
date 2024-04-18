@@ -21,8 +21,13 @@ export default function UserNavLoginDesktop({ infoUser }) {
     setOpen(false);
   };
   return (
-    <div className="flex space-x-5">
-      <div className=" flex items-center space-x-3  text-white">
+    <div className="flex items-end space-x-5">
+      <div
+        onClick={() => {
+          navigate("/user/info");
+        }}
+        className=" flex items-end space-x-3  text-white cursor-pointer"
+      >
         <img
           className=" h-9 w-9 text-xl  bg-[#9E9E9E] rounded-full"
           src={avatarUser}
@@ -31,14 +36,15 @@ export default function UserNavLoginDesktop({ infoUser }) {
           }}
           alt=""
         />
-        <span className="text-lg">{infoUser.hoTen}</span>
-        <button
-          className="text-2xl  pb-1 text-blue-700 hover:text-blue-300  font-bold relative top-1"
-          onClick={showDrawer}
-        >
-          <MenuOutlined />
-        </button>
+        <span className="text-lg relative" style={{bottom: '1px'}}>{infoUser.hoTen}</span>
       </div>
+      <button
+        className="text-2xl  pb-1 text-blue-700 hover:text-blue-300  font-bold relative top-1"
+        onClick={showDrawer}
+      >
+        <MenuOutlined />
+      </button>
+
       <Drawer
         size="default"
         placement="left"
@@ -58,8 +64,16 @@ export default function UserNavLoginDesktop({ infoUser }) {
               }}
               alt=""
             />
-            <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
-              {infoUser.hoTen}
+            <div
+              onClick={() => {
+                navigate("/user/info");
+              }}
+              className="cursor-pointer"
+            >
+              <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
+                {infoUser.hoTen}
+              </div>
+              <div className="text-[#ACAFB4]">Xem thông tin cá nhân</div>
             </div>
           </div>
           <hr className=" bg-gray-300" />

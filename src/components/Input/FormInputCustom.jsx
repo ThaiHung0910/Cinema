@@ -4,18 +4,15 @@ import { userSer } from "../../service/userSer";
 import { useDispatch, useSelector } from "react-redux";
 import { resetErrorMessage } from "../../redux/userReducer/userSlice";
 import { isValueInArray } from "../../utils";
-
-
+import { duplicateLocal } from "../../service/localService";
 
 function FormInputCustom({ name, label, type, disable, formikField }) {
   let [translateLabel, setTranslateLabel] = useState(true);
   let [inputType, setInputType] = useState(true);
   let [focusedInput, setFocusedInput] = useState(false);
+  let [localStorageLoaded, setLocalStorageLoaded] = useState(false);
   let [errorFromApi, setErrorFromApi] = useState("");
-  let [duplicateErrors, setDuplicateErrors] = useState({
-    taiKhoan: { value: [], error: "" },
-    email: { value: [], error: "" },
-  });
+  let [duplicateErrors, setDuplicateErrors] = useState();
   const { values, touched, errors, handleChange, handleBlur } = formikField;
   let value = values[name];
   let { errorMessage } = useSelector((state) => state.userReducer);
@@ -41,18 +38,49 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
     }
     if (errorMessage.includes(label)) {
       setErrorFromApi(errorMessage);
-      const isDuplicate = isValueInArray(value, duplicateErrors[name]?.value);
-
+      let valueDuplicate = duplicateErrors[name]?.value || [];
+      const isDuplicate = isValueInArray(value, valueDuplicate);
       setDuplicateErrors({
         ...duplicateErrors,
         [name]: {
-          value: !isDuplicate ? [...duplicateErrors[name]?.value, value] : [...duplicateErrors[name]?.value],
+          value: !isDuplicate
+            ? [...valueDuplicate, value]
+            : [...valueDuplicate],
           error: errorMessage,
         },
       });
+
       dispatch(resetErrorMessage());
     }
   }, [value, errorMessage]);
+
+  useEffect(() => {
+    // Lấy dữ liệu từ localStorage khi component được render lần đầu tiên
+    if (!localStorageLoaded) {
+      const storedData = duplicateLocal.get() || {};
+      if (storedData) {
+        setDuplicateErrors({ ...storedData });
+      }
+      setLocalStorageLoaded(true);
+    }
+  }, []);
+
+  // Cập nhật dữ liệu vào localStorage
+  useEffect(() => {
+    const storedData = duplicateLocal.get() || {};
+    const updateLocalStorage = () => {
+      const newData = {
+        ...storedData,
+        ...duplicateErrors,
+      };
+      duplicateLocal.set(newData);
+    };
+
+    // Gọi hàm updateLocalStorage khi có sự thay đổi trong duplicateErrors
+    if (localStorageLoaded) {
+      updateLocalStorage();
+    }
+  }, [duplicateErrors]);
 
   return (
     <div className="relative">
@@ -75,8 +103,11 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
         value={value}
         onChange={(e) => {
           handleChange(e);
-          const isDuplicate = isValueInArray(e.target.value, duplicateErrors[name]?.value);
-          setErrorFromApi(isDuplicate ? duplicateErrors[name]?.error : "");
+          let valueDuplicate = duplicateErrors[name]?.value || [];
+          if (valueDuplicate) {
+            const isDuplicate = isValueInArray(e.target.value, valueDuplicate);
+            setErrorFromApi(isDuplicate ? duplicateErrors[name]?.error : "");
+          }
         }}
         onFocus={() => {
           if (!value) {
@@ -86,7 +117,6 @@ function FormInputCustom({ name, label, type, disable, formikField }) {
         }}
         onBlur={(e) => {
           handleBlurCustom();
-          console.log(duplicateErrors)
           handleBlur(e);
         }}
       />

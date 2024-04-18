@@ -23,7 +23,10 @@ export default function UserNavLoginTablet({ infoUser }) {
   return (
     <div className="flex items-end space-x-5">
       <div
-        className=" flex items-end space-x-3  text-white
+        onClick={() => {
+          navigate("/user/info");
+        }}
+        className=" flex items-end space-x-3  text-white cursor-pointer
        "
       >
         <img
@@ -35,14 +38,14 @@ export default function UserNavLoginTablet({ infoUser }) {
           alt=""
         />
         <span className="text-lg relative bot-1 ">{infoUser.hoTen}</span>
-
-        <button
-          className="text-2xl  pb-1 text-blue-700 hover:text-blue-800  font-bold relative top-1 "
-          onClick={showDrawer}
-        >
-          <MenuOutlined />
-        </button>
       </div>
+
+      <button
+        className="text-2xl  pb-1 text-blue-700 hover:text-blue-800  font-bold relative top-1 "
+        onClick={showDrawer}
+      >
+        <MenuOutlined />
+      </button>
       <Drawer
         size="default"
         placement="left"
@@ -56,8 +59,16 @@ export default function UserNavLoginTablet({ infoUser }) {
           <div className="flex items-center space-x-4 py-3 px-2  transition rounded-lg">
             <img className="h-12 w-12  rounded-full" src={avatarUser} alt="" />
 
-            <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
-              {infoUser.hoTen}
+            <div
+              onClick={() => {
+                navigate("/user/info");
+              }}
+              className="cursor-pointer"
+            >
+              <div className="pt-1 text-xl  text-[#C6C7CC]  font-bold">
+                {infoUser.hoTen}
+              </div>
+              <div className="text-[#ACAFB4]">Xem thông tin cá nhân</div>
             </div>
           </div>
           <hr className=" bg-gray-300" />

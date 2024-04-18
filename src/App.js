@@ -10,7 +10,6 @@ import ButtonToTop from "./components/ButtonToTop/ButtonToTop";
 import RegisterPage from "../src/pages/RegisterPage/RegisterPage";
 import CheckUser from "./HOC/CheckUser";
 
-
 import AdminTemplate from "./templates/AdminTemplate";
 // import AdminPage from "./pages/AdminPage/AdminPage";
 import AddFlims from "./pages/AdminPage/Films/AddFlims";
@@ -19,8 +18,8 @@ import Films from "./pages/AdminPage/Films/Films";
 import ScreenPage from "./pages/ScreenPage/ScreenPage";
 import Page404 from "./pages/Page404/Page404";
 import HistoryBooking from "./pages/HistoryBooking/HistoryBooking";
+import UserInfoPage from "./pages/UserInfoPage/UserInfoPage";
 import UserTemplate from "./templates/UserTemplate";
-
 
 function App() {
   return (
@@ -36,10 +35,7 @@ function App() {
             path="screen/:maLichChieu"
             element={
               <CheckUser>
-
-
                 <ScreenPage />
-
               </CheckUser>
             }
           />
@@ -59,9 +55,10 @@ function App() {
           <Route path="addMovies" element={<AddFlims />} />
         </Route>
 
-        {/* User Info */}
+        {/* User template */}
         <Route path="user" element={<UserTemplate />}>
           <Route path="history" element={<HistoryBooking />} />
+          <Route path="info" element={<UserInfoPage />} />
         </Route>
       </Routes>
 
