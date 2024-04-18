@@ -7,6 +7,8 @@ import {
   submitCommentAction,
 } from "../../../../redux/commentReducer/commentSlice";
 import { avatarUser, imageNotFound } from "../../../../assets/img/js/img";
+import { swalCustom } from "../../../../utils";
+
 
 export default function PageDetailComment() {
   const [open, setOpen] = useState(false);
@@ -99,7 +101,13 @@ export default function PageDetailComment() {
     <div>
       <button
         className="xl:px-2 md:px-2 px-2 xl:py-2 md:py-2 py-2 text-white hover:text-white bg-blue-500 hover:bg-blue-700 rounded-md duration-150"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          if(infoUser) {
+            setOpen(true)
+          } else {
+            swalCustom("error", "Vui lòng đăng nhập để bình luận", 1000)
+          }
+        }}
       >
         Đến bình luận *meo meo*
       </button>

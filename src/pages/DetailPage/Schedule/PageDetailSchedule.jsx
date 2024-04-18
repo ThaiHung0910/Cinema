@@ -30,7 +30,7 @@ const CustomTabs = styled(Tabs)`
     margin: 0;
     position: absolute;
     right: 16px;
-    top: 57%;
+    top: 62%;
     transform: translateY(-50%);
   }
   .ant-collapse-icon-position-end > .ant-collapse-item > .ant-collapse-header {
@@ -56,46 +56,45 @@ export default function PageDetailSchedule(props) {
     });
   };
 
-  let renderCumRapChieu = (cumRapChieu) => {
-    return cumRapChieu?.map((cumRap, index) => {
-      return (
-        <div key={index} className="h-full overflow-auto">
-          {renderLichChieuPhim(
-            cumRap.lichChieuPhim,
-            cumRap.tenCumRap,
-            cumRap.diaChi
-          )}
-        </div>
-      );
-    });
-  };
 
   // RENDER THEATER ============================
   let renderTheater = (cumRapChieu, logo) => {
-    return cumRapChieu?.map((cumRap) => {
-      return (
-        <Panel
-          header={
-            <div className="xl:flex md:flex flex space-x-3 xl:justify-around md:justify-around w-full">
-              <div className="xl:w-1/12 md:w-1/12 w-1/12 flex items-center">
-                <img src={logo} alt="" />
-              </div>
-              <div className="xl:w-10/12 md:w-10/12 w-11/12 text-left  border-b">
-                <div className="xl:text-xl md:text-xl text-lg">
-                  {cumRap.tenCumRap}
+    return cumRapChieu?.map((cumRap, index) => {
+      return {
+        key: index,
+        label: (
+          <Panel
+            header={
+              <div className="xl:flex md:flex flex space-x-3 xl:justify-around md:justify-around w-full">
+                <div className="xl:w-1/12 md:w-1/12 w-1/12 flex items-center">
+                  <img src={logo} alt="" />
                 </div>
-                <div className="flex items-center justify-between text-sm space-x-2">
-                  <span className="xl:text-base md:text-base text-xs">
-                    {cumRap.diaChi}
-                  </span>
-                  <PageDetailMap />
+                <div className="xl:w-10/12 md:w-10/12 w-11/12 text-left  border-b">
+                  <div className="xl:text-xl md:text-xl text-lg">
+                    {cumRap.tenCumRap}
+                  </div>
+                  <div className="flex items-center justify-between text-sm space-x-2">
+                    <span className="xl:text-base md:text-base text-xs">
+                      {cumRap.diaChi}
+                    </span>
+                    <PageDetailMap />
+                  </div>
                 </div>
               </div>
-            </div>
-          }
-          key={cumRap.maCumRap}
-        />
-      );
+            }
+            key={cumRap.maCumRap}
+          />
+        ),
+        children: (
+          <div className="h-full overflow-auto">
+            {renderLichChieuPhim(
+              cumRap.lichChieuPhim,
+              cumRap.tenCumRap,
+              cumRap.diaChi
+            )}
+          </div>
+        ),
+      };
     });
   };
   // RENDER CONTENT ===============================
@@ -119,13 +118,7 @@ export default function PageDetailSchedule(props) {
               expandIconPosition="end"
               className="xl:h-[28rem] md:h-96"
               defaultActiveKey="1"
-              items={[
-                {
-                  key: 1,
-                  label: renderTheater(heThongRap.cumRapChieu, heThongRap.logo),
-                  children: renderCumRapChieu(heThongRap.cumRapChieu),
-                },
-              ]}
+              items={renderTheater(heThongRap.cumRapChieu, heThongRap.logo)}
             />
           ),
         };
@@ -165,9 +158,8 @@ export default function PageDetailSchedule(props) {
               />
             </div>
             {/* // CARD ĐÁNH GIÁ  ==================================== */}
-            <div className="xl:w-1/3 md:w-1/3 w-full">
-              <div className="xl:w-2/3 sm:w-full ">
-                <div className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border column ">
+            <div className="xl:w-1/3 md:w-1/3 w-full xl:flex md:flex  flex  justify-center items-center">
+                <div className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border " style={{width: '300px'}}>
                   <div className="flex items-center justify-center">
                     <div
                       className={`${style["bubble"]} ${style["bubble-bottom-left"]} px-1 py-3 xl:text-xs `}
@@ -190,7 +182,6 @@ export default function PageDetailSchedule(props) {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         ) : (
