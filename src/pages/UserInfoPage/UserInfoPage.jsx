@@ -88,12 +88,12 @@ export default function UserInfoPage() {
       <div className="flex items-center justify-center w-full h-full xl:scale-90 md:scale-125">
         <form
           onSubmit={formUpdate.handleSubmit}
-          className="flex items-center justify-center xl:w-1/2 md:w-1/2 w-5/6 py-8  bg-[rgba(0,0,0,.75)] z-10"
+          className="flex items-center justify-center xl:w-1/2 md:w-1/2 w-5/6 py-8 md:my-28 xl:my-0 my-7 bg-[rgba(0,0,0,.75)] z-10"
         >
           {/* ///----------- LOTIE GIF -----  */}
           {/* // form Input ---------------------- */}
           <div className="w-2/3 space-y-5">
-            <h1 className="xl:text-4xl md:text-4xl text-xl  mb-10 text-white  font-sans">
+            <h1 className="xl:text-4xl md:text-3xl text-xl  mb-10 text-white  font-sans">
               Thông tin cá nhân{" "}
               <span className="text-orange-600 xl:text-lg md:text-lg text-sm">
                 <br /> (Có thể chỉnh sửa được)
