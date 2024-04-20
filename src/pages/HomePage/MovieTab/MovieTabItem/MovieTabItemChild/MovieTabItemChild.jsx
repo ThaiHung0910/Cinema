@@ -7,7 +7,7 @@ export default function MovieTabItemChild(props) {
       <div className="py-6">
         <h1 className="mb-6">
           <span className="bg-blue-700 text-lg text-white px-1 py-1 rounded-md">
-            C17
+            C18
           </span>
           <span className="text-xl font-medium"> {props.dataPhim.tenPhim}</span>
         </h1>

@@ -55,7 +55,7 @@ export default function UserNavLoginDesktop({ infoUser }) {
       >
         {/* //Information  */}
         <div className="space-y-1 ">
-          <div className="flex items-center space-x-4 py-3 px-2  transition rounded-lg">
+          <div className="flex items-center space-x-4 py-3 px-2 hover:bg-[#3A3B3C] transition rounded-lg">
             <img
               className="h-12 w-12  rounded-full"
               src={avatarUser}

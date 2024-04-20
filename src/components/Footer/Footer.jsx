@@ -1,7 +1,12 @@
 import React from "react";
 import logo2 from "../../assets/img/logo/logo2.png";
+import "./footer.css";
 
 export default function Footer() {
+  const handleClick = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <footer
@@ -12,7 +17,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div>
               <div className="flex justify-center text-blue-300 items-center sm:justify-start">
-              <img src={logo2} className="w-16 h-16" alt="" />
+                <img src={logo2} className="w-16 h-16" alt="" />
                 <span className="font-bold text-2xl"> Cinema</span>
               </div>
               <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:mx-0 sm:max-w-xs sm:text-left">
@@ -24,7 +29,7 @@ export default function Footer() {
                   <a
                     href="/"
                     rel="noreferrer"
-                    target="_blank"
+                    onClick={handleClick}
                     className="text-blue-300 transition hover:text-blue-300/75"
                   >
                     <span className="sr-only">Facebook</span>
@@ -46,7 +51,7 @@ export default function Footer() {
                   <a
                     href="/"
                     rel="noreferrer"
-                    target="_blank"
+                    onClick={handleClick}
                     className="text-blue-300 transition hover:text-blue-300/75"
                   >
                     <span className="sr-only">Instagram</span>
@@ -68,7 +73,7 @@ export default function Footer() {
                   <a
                     href="/"
                     rel="noreferrer"
-                    target="_blank"
+                    onClick={handleClick}
                     className="text-blue-300 transition hover:text-blue-300/75"
                   >
                     <span className="sr-only">Twitter</span>
@@ -86,7 +91,7 @@ export default function Footer() {
                   <a
                     href="/"
                     rel="noreferrer"
-                    target="_blank"
+                    onClick={handleClick}
                     className="text-blue-300 transition hover:text-blue-300/75"
                   >
                     <span className="sr-only">GitHub</span>
@@ -108,7 +113,7 @@ export default function Footer() {
                   <a
                     href="/"
                     rel="noreferrer"
-                    target="_blank"
+                    onClick={handleClick}
                     className="text-blue-300 transition hover:text-blue-300/75"
                   >
                     <span className="sr-only">Linkedin</span>
@@ -133,6 +138,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         ReactJS
                       </a>
@@ -141,6 +147,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         Restful API
                       </a>
@@ -149,6 +156,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         Ajax
                       </a>
@@ -157,6 +165,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         ES6
                       </a>
@@ -174,6 +183,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         Web Development
                       </a>
@@ -182,6 +192,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         Web Design
                       </a>
@@ -190,6 +201,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         Marketing
                       </a>
@@ -198,6 +210,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         Google Ads
                       </a>
@@ -215,6 +228,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         FAQs
                       </a>
@@ -223,6 +237,7 @@ export default function Footer() {
                       <a
                         className="text-gray-500 font-medium transition hover:text-gray-500 font-medium/75"
                         href="/"
+                        onClick={handleClick}
                       >
                         Support
                       </a>
@@ -231,6 +246,7 @@ export default function Footer() {
                       <a
                         className="group flex justify-center gap-1.5 sm:justify-start"
                         href="/"
+                        onClick={handleClick}
                       >
                         <span className="text-gray-500 font-medium transition group-hover:text-gray-500 font-medium/75">
                           Live Chat
@@ -251,6 +267,7 @@ export default function Footer() {
                     <a
                       className="flex items-center justify-center gap-1.5 sm:justify-start"
                       href="/"
+                      onClick={handleClick}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -275,6 +292,7 @@ export default function Footer() {
                     <a
                       className="flex items-center justify-center gap-1.5 sm:justify-start"
                       href="/"
+                      onClick={handleClick}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -329,8 +347,9 @@ export default function Footer() {
               <br />
               Created by{" "}
               <a
-                href="#"
+                href="/"
                 className="text-blue-500 underline transition hover:text-blue-600/75"
+                onClick={handleClick}
               >
                 Cinema
               </a>

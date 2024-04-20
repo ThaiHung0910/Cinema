@@ -16,6 +16,7 @@ export const TOKEN_CYBER =
   
   export const configHeader = () => {
   const accessToken = userLocal.get()?.accessToken;
+  // console.log(`Bearer ${accessToken}`)
   return {
     TokenCybersoft: TOKEN_CYBER,
     Authorization: `Bearer ${accessToken}`

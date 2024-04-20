@@ -1,0 +1,41 @@
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #1d4ed8 !important;
+}
+.ant-tabs-tab:hover {
+  color: #93c5fd !important;
+}
+.ant-tabs-ink-bar {
+  position: absolute;
+  background: #3eb4e7;
+  pointer-events: none;
+}
+
+.ant-tabs.ant-tabs-left.ant-tabs-centered
+  .ant-tabs-nav
+  .ant-tabs-nav-wrap.ant-tabs-nav-wrap-ping-bottom {
+  justify-content: flex-start;
+}
+
+.ant-tabs.ant-tabs-top > .ant-tabs-nav .ant-tabs-nav-operations {
+  display: none;
+}
+
+.ant-tabs.ant-tabs-top div > .ant-tabs-nav .ant-tabs-nav-operations {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
+  .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+    justify-content: center;
+  }
+
+  .ant-tabs.ant-tabs-top
+    .ant-tabs-nav
+    .ant-tabs-nav-wrap.ant-tabs-nav-wrap-ping-right,
+  .ant-tabs.ant-tabs-top
+    .ant-tabs-nav
+    .ant-tabs-nav-wrap.ant-tabs-nav-wrap-ping-left {
+    justify-content: flex-start;
+  }
+}

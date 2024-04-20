@@ -5,6 +5,7 @@ import { MA_NHOM } from "../../../service/urlConfig";
 import style from "./SpeedBooking.module.css";
 import { useMediaQuery } from "react-responsive";
 import { swalCustom } from "../../../utils";
+import moment from "moment";
 
 
 
@@ -98,7 +99,7 @@ export default function SpeedBooking() {
     return cumRapUserChon?.lichChieuPhim.map((lichChieu) => {
       return (
         <option key={lichChieu.maLichChieu} value={lichChieu.maLichChieu}>
-          {lichChieu.ngayChieuGioChieu}
+          {moment(lichChieu.ngayChieuGioChieu).format("DD/MM/yy ~ HH:MM")}
         </option>
       );
     });

@@ -40,7 +40,7 @@ export default function UserNavLogOutMobile() {
           }}
           className="flex items-center space-x-4 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >
-          <UserOutlined className="h-8 w-8 leading-7 text-2xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
+          <UserOutlined className="p-2 leading-7 text-2xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
           <span className=" text-xl text-[#C6C7CC] ">Đăng nhập</span>
         </div>
         {/* // LogOut  */}
@@ -50,7 +50,7 @@ export default function UserNavLogOutMobile() {
           }}
           className="flex items-center space-x-4 py-3 px-2 mt-2 hover:bg-[#3A3B3C] transition rounded-lg cursor-pointer"
         >
-          <UsergroupAddOutlined className="h-8 w-8 leading-7 text-2xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
+          <UsergroupAddOutlined className="p-2 leading-7 text-2xl  text-white text-center  bg-[#4E4F50] rounded-full" />{" "}
           <span className=" text-xl text-[#C6C7CC] ">Đăng ký</span>
         </div>
       </Drawer>

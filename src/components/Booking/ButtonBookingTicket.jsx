@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { backGroundLogin } from "../../assets/img/js/img";
 import { swalCustom } from "../../utils";
+import moment from "moment";
+
 
 export default function ButtonBookingTicket(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -86,7 +88,7 @@ export default function ButtonBookingTicket(props) {
                     NGÀY CHIẾU :
                   </div>
                   <div className="font-bold text-xl">
-                    {props.ngayChieuGioChieu}
+                  {moment(props.ngayChieuGioChieu).format("DD/MM/yy")}
                   </div>
                 </div>
                 <div className="w-1/2">
@@ -94,7 +96,7 @@ export default function ButtonBookingTicket(props) {
                     GIỜ CHIẾU :
                   </div>
                   <div className="font-bold text-xl">
-                    {props.ngayChieuGioChieu}
+                  {moment(props.ngayChieuGioChieu).format("HH:MM")}
                   </div>
                 </div>
               </div>
@@ -190,13 +192,13 @@ export default function ButtonBookingTicket(props) {
               <div className="w-1/2">
                 <div className=" text-blue-700 font-medium">NGÀY CHIẾU :</div>
                 <div className="font-bold text-xl">
-                  {props.ngayChieuGioChieu}
+                {moment(props.ngayChieuGioChieu).format("DD/MM/yy")}
                 </div>
               </div>
               <div className="w-1/2">
                 <div className=" text-blue-700 font-medium">GIỜ CHIẾU :</div>
                 <div className="font-bold text-xl">
-                  {props.ngayChieuGioChieu}
+                {moment(props.ngayChieuGioChieu).format("HH:MM")}
                 </div>
               </div>
             </div>
@@ -230,7 +232,7 @@ export default function ButtonBookingTicket(props) {
         className="py-3 px-2 mt-2 mx-2 font-bold text-center border border-blue-700  text-blue-700 hover:text-white hover:bg-blue-500 duration-300 rounded-lg"
         onClick={showModal}
       >
-        { props.ngayChieuGioChieu}
+        {moment(props.ngayChieuGioChieu).format("DD/MM/yy ~ HH:MM")}
       </button>
       <Modal
         styles={{ body: { padding: "35px" }, content: { padding: 0 } }}

@@ -74,7 +74,7 @@ export default function DetailPage() {
             <div className="xl:space-y-3 md:space-y-1 space-y-1">
               <p className="flex items-start xl:space-x-3 md:space-x-2 space-x-2 xl:text-3xl md:text-2xl text-xl font-bold text-white">
                 <span className="bg-blue-700 xl:text-lg md:text-base text-sm text-white xl:px-1 md:px-1 px-1 rounded-md">
-                  C17
+                  C18
                 </span>
                 <span>{dataMovieDetail.tenPhim}</span>
               </p>

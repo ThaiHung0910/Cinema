@@ -1,0 +1,55 @@
+.bubble {
+  position: relative;
+  font-family: sans-serif;
+  width: 50%;
+  border-radius: 40px;
+  text-align: center;
+  @apply bg-blue-500 text-white;
+}
+
+.bubble-bottom-left:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 24px solid rgb(59, 130, 246);
+  border-right: 12px solid transparent;
+  border-top: 12px solid rgb(59, 130, 246);
+  border-bottom: 20px solid transparent;
+  left: 40%;
+  bottom: -32px;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #1d4ed8 !important;
+}
+.ant-tabs-tab:hover {
+  color: #93c5fd !important;
+}
+.ant-tabs-ink-bar {
+  position: absolute;
+  background: #3eb4e7;
+  pointer-events: none;
+}
+.ant-collapse-icon-position-end
+  > .ant-collapse-item
+  > .ant-collapse-header
+  .ant-collapse-arrow {
+  left: auto;
+  margin: 0;
+  position: absolute;
+  right: 16px;
+  top: 60%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 1200px) {
+  .ant-collapse-icon-position-end
+    > .ant-collapse-item
+    > .ant-collapse-header
+    .ant-collapse-arrow {
+    right: 7px;
+    top: 40%;
+    transform: translateY(0);
+  }
+}

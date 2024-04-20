@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import style from "./historyBooking.module.css";
 import { userSer } from "../../service/userSer";
+import moment from "moment/moment";
 
 export default function HistoryBooking() {
   let {infoUser} = useSelector((state) => state.userReducer);
@@ -51,7 +52,7 @@ export default function HistoryBooking() {
             className={`${style.col} ${style.col_3}`}
             data-label="Ngày giờ đặt:"
           >
-            {info.ngayDat}
+            {moment(info.ngayDat).format("DD/MM/yy ~ HH:MM")}
           </div>
           <div className={`${style.col} ${style.col_4}`} data-label="Ghế đặt:">
             {renderGheDaDat(info.danhSachGhe)}

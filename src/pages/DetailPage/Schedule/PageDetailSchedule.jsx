@@ -1,43 +1,15 @@
 import { Tabs, Collapse, Rate } from "antd";
 import React from "react";
-import styled from "styled-components";
 import Lottie from "lottie-react";
 import cat_comment from "../../../assets/json/cat_comment.json";
 import PageDetailMap from "./Map/PageDetailMap";
 import PageDetailComment from "./Comment/PageDetailComment";
 
-import style from "./PageDetailSchedule.module.css";
+import  "./pageDetailSchedule.css";
 import ButtonBookingTicket from "../../../components/Booking/ButtonBookingTicket";
 
 const { Panel } = Collapse;
-const CustomTabs = styled(Tabs)`
-  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: #1d4ed8 !important;
-  }
-  .ant-tabs-tab:hover {
-    color: #93c5fd !important;
-  }
-  .ant-tabs-ink-bar {
-    position: absolute;
-    background: #3eb4e7;
-    pointer-events: none;
-  }
-  .ant-collapse-icon-position-end
-    > .ant-collapse-item
-    > .ant-collapse-header
-    .ant-collapse-arrow {
-    left: auto;
-    margin: 0;
-    position: absolute;
-    right: 16px;
-    top: 62%;
-    transform: translateY(-50%);
-  }
-  .ant-collapse-icon-position-end > .ant-collapse-item > .ant-collapse-header {
-    padding: 12px 40px 12px 16px;
-    position: relative;
-  }
-`;
+
 export default function PageDetailSchedule(props) {
   let renderLichChieuPhim = (lichChieuPhim, tenCumRap, diaChiCumRap) => {
     return lichChieuPhim.map((schedule) => {
@@ -59,9 +31,9 @@ export default function PageDetailSchedule(props) {
 
   // RENDER THEATER ============================
   let renderTheater = (cumRapChieu, logo) => {
-    return cumRapChieu?.map((cumRap, index) => {
+    return cumRapChieu?.map((cumRap) => {
       return {
-        key: index,
+        key: cumRap.maCumRap,
         label: (
           <Panel
             header={
@@ -82,7 +54,6 @@ export default function PageDetailSchedule(props) {
                 </div>
               </div>
             }
-            key={cumRap.maCumRap}
           />
         ),
         children: (
@@ -147,7 +118,7 @@ export default function PageDetailSchedule(props) {
           // {/* // SHOW PHIM DANG CHIEU ======================== */}
           <div className="xl:flex md:flex xl:pb-10 xl:space-x-4 md:space-x-4  border justify-between items-center ">
             <div className="xl:w-2/3 md:w-2/3">
-              <CustomTabs
+              <Tabs
                 tabBarGutter={"2rem"}
                 tabBarExtraContent={{
                   left: <div className="xl:w-8 md:w-4 w-4"></div>,
@@ -162,7 +133,7 @@ export default function PageDetailSchedule(props) {
                 <div className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border " style={{width: '300px'}}>
                   <div className="flex items-center justify-center">
                     <div
-                      className={`${style["bubble"]} ${style["bubble-bottom-left"]} px-1 py-3 xl:text-xs `}
+                      className="bubble bubble-bottom-left px-1 py-3 xl:text-xs"
                     >
                       Cộng đồng meo meo nghĩ gì?
                     </div>

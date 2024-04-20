@@ -5,6 +5,7 @@ import { maVach } from "../../../assets/img/js/img";
 import { useNavigate } from "react-router-dom";
 import { sendDataListBookingChairThunk } from "../../../redux/movieReducer/movieThunk";
 import { swalCustom } from "../../../utils";
+import moment from "moment";
 
 export default function ScreePageRight() {
   let dispatch = useDispatch();
@@ -61,7 +62,7 @@ export default function ScreePageRight() {
                 </span>{" "}
                 <br />
                 <span className={`${style["fontStyleInfo"]}`}>
-                  {infoMovie.ngayChieu}
+                {moment(infoMovie.ngayChieu).format("DD-MM-YY")}
                 </span>
               </div>
               {/* // Giờ chiếu  */}

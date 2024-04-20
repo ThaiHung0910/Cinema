@@ -13,7 +13,7 @@ export default function PageDetailMap() {
       </span>
       <Modal
         footer={null}
-        styles={{ padding: "0px" }}
+        styles={{content: { padding: "0px" }}}
         centered
         open={open}
         onOk={() => setOpen(false)}

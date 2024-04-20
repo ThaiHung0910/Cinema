@@ -20,6 +20,7 @@ export default function MovieTabItem({ maHeThongRap }) {
       console.log(err);
     }
   };
+
   useEffect(() => {
     featchApi({ maHeThongRap });
   }, [maHeThongRap]);
@@ -41,11 +42,12 @@ export default function MovieTabItem({ maHeThongRap }) {
   };
 
   let renderTheater = () => {
-    return dataTheater.lstCumRap?.map((cumrap, i) => {
+    return dataTheater.lstCumRap?.map((cumrap) => {
+      let selector = cumrap.maCumRap.replace(/\s/g, "").toLowerCase();
       return {
-        key: i,
+        key: selector,
         label: (
-          <div className="w-64  text-center border-b">{cumrap.tenCumRap}</div>
+          <div  className="w-64  text-center border-b">{cumrap.tenCumRap}</div>
         ),
         children: renderLichChieuPhim(
           cumrap.danhSachPhim,
@@ -55,9 +57,10 @@ export default function MovieTabItem({ maHeThongRap }) {
       };
     });
   };
+
   return (
     <Tabs
-      className=" w-full xl:h-[38rem] md:h-[40rem] h-[40rem]"
+      className="w-full xl:h-[38rem] md:h-[40rem] h-[40rem]"
       centered
       tabPosition={isDesktop ? "left" : "top"}
       defaultActiveKey="BHD Star Cineplex - Bitexco"

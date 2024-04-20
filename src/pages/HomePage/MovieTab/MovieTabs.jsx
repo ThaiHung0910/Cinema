@@ -1,23 +1,12 @@
 import { Tabs } from "antd";
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import MovieTabItem from "./MovieTabItem/MovieTabItem";
 import { MA_NHOM } from "../../../service/urlConfig";
 import { movieSer } from "../../../service/movieSer";
+import "./movieTabs.css"
 
-const CustomTabs = styled(Tabs)`
-  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: #1d4ed8 !important;
-  }
-  .ant-tabs-tab:hover {
-    color: #93c5fd !important;
-  }
-  .ant-tabs-ink-bar {
-    position: absolute;
-    background: #3eb4e7;
-    pointer-events: none;
-  }
-`;
+
+
 export default function MovieTabs() {
   let [dataMovieTab, setDataMovieTab] = useState([]);
   let fetchApi = async () => {
@@ -33,11 +22,10 @@ export default function MovieTabs() {
     fetchApi();
   }, []);
 
-
   let renderMovieTab = () => {
-    return dataMovieTab.map((heThongRap, index) => {
+    return dataMovieTab.map((heThongRap) => {
       return {
-        key: index,
+        key: heThongRap.maHeThongRap,
         label: (
           <img
             src={heThongRap.logo}
@@ -50,23 +38,25 @@ export default function MovieTabs() {
     });
   };
   return (
-    <div className="container mx-auto border-2 rounded-xl shadow-xl">
+    <div>
       <h1 className="xl:text-4xl md:text-4xl text-3xl text-center text-blue-700 font-bold mb-8 py-3">
         Lịch chiếu phim
       </h1>
-      <CustomTabs
-        tabBarExtraContent={{
-          left: (
-            <div className=" xl:w-80 md:hidden hidden xl:block text-center xl:text-5xl md:text-3xl text-blue-700 font-extrabold">
-              Cinema
-            </div>
-          ),
-        }}
-        tabPosition="top"
-        centered={window.innerWidth > 1279 ? false : true}
-        defaultActiveKey="BHDStar"
-        items={renderMovieTab()}
-      />
+      <div className="container mx-auto border-2 rounded-xl shadow-xl">
+        <Tabs
+          tabBarExtraContent={{
+            left: (
+              <div className=" xl:w-80 md:hidden hidden xl:block text-center xl:text-5xl md:text-3xl text-blue-700 font-extrabold">
+                Cinema
+              </div>
+            ),
+          }}
+          tabPosition="top"
+          centered={window.innerWidth > 1279 ? false : true}
+          defaultActiveKey="BHDStar"
+          items={renderMovieTab()}
+        />
+      </div>
     </div>
   );
 }
