@@ -3,35 +3,30 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useRef } from "react";
-import { MA_NHOM } from "../../../service/urlConfig";
-import { movieSer } from "../../../service/movieSer";
 import ItemMovie from "./ItemMovie/ItemMovie";
 import { backGroundLogin } from "../../../assets/img/js/img";
 import { LeftCircleFilled, RightCircleFilled } from "@ant-design/icons";
-
+import { fetchApiMovie } from "../../../utils";
 
 export default function MovieList() {
   let [listMovie, setListMovie] = useState([]);
 
   const refSlide = useRef();
 
+  let fetchApi = async () => {
+    try {
+      let result = await fetchApiMovie("getListMovies");
+      setListMovie(result);
+    } catch (err) {}
+  };
+
   useEffect(() => {
     fetchApi();
   }, []);
 
-  let fetchApi = async () => {
-    try {
-      let res = await movieSer.getListMovies(MA_NHOM);
-      setListMovie(res.data.content);
-      console.log(res.data.content);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   let renderListMovie = () => {
     return listMovie.map((movie, index) => {
-      return <ItemMovie key={index} dataMovie={movie} index={index} />;
+      return <ItemMovie key={movie.maPhim} dataMovie={movie} index={index} />;
     });
   };
 

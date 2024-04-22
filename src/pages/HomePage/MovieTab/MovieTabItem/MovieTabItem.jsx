@@ -1,21 +1,20 @@
 import { Tabs } from "antd";
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { movieSer } from "../../../../service/movieSer";
 import { MA_NHOM } from "../../../../service/urlConfig";
 import MovieTabItemChild from "./MovieTabItemChild/MovieTabItemChild";
+import { fetchApiMovie } from "../../../../utils";
+
+
 
 export default function MovieTabItem({ maHeThongRap }) {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   let [dataTheater, setDataTheater] = useState({});
   let featchApi = async ({ maHeThongRap }) => {
-    let params = {
-      maNhom: MA_NHOM,
-      maHeThongRap,
-    };
     try {
-      let res = await movieSer.getMovieByTheater(params);
-      setDataTheater(res.data.content[0]);
+      let res = await fetchApiMovie('getMovieByTheater', {maHeThongRap}, true)
+      console.log(res)
+      setDataTheater(res[0]);
     } catch (err) {
       console.log(err);
     }

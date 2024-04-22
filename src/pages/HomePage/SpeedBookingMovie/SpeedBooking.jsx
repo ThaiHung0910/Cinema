@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { movieSer } from "../../../service/movieSer";
-import { MA_NHOM } from "../../../service/urlConfig";
 import style from "./SpeedBooking.module.css";
 import { useMediaQuery } from "react-responsive";
-import { swalCustom } from "../../../utils";
+import { fetchApiMovie, swalCustom } from "../../../utils";
 import moment from "moment";
 
 
@@ -23,8 +22,8 @@ export default function SpeedBooking() {
 
   let fetchApiListMovie = async () => {
     try {
-      let res = await movieSer.getListMovies(MA_NHOM);
-      setDataListMovie(res.data.content);
+      let data = await fetchApiMovie('getListMovies')
+      setDataListMovie(data)
     } catch (err) {
       console.log(err);
     }

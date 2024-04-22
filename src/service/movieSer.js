@@ -1,9 +1,9 @@
-import { MA_NHOM, http } from './urlConfig';
+import { http } from './urlConfig';
 
 export const movieSer = {
-  getListMovies: () => {
-    let uri = `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${MA_NHOM}`;
-    return http.get(uri);
+  getListMovies: (params) => {
+    let uri = `/api/QuanLyPhim/LayDanhSachPhim`;
+    return http.get(uri , { params });
   },
   getDetailMovie: (idMovie) => {
     let uri = `/api/QuanLyPhim/LayThongTinPhim?MaPhim=${idMovie}`;

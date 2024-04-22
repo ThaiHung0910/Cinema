@@ -1,21 +1,17 @@
 import { Tabs } from "antd";
 import React, { useEffect, useState } from "react";
 import MovieTabItem from "./MovieTabItem/MovieTabItem";
-import { MA_NHOM } from "../../../service/urlConfig";
-import { movieSer } from "../../../service/movieSer";
 import "./movieTabs.css"
+import { fetchApiMovie } from "../../../utils";
 
 
 
 export default function MovieTabs() {
   let [dataMovieTab, setDataMovieTab] = useState([]);
   let fetchApi = async () => {
-    let params = {
-      maNhom: MA_NHOM,
-    };
     try {
-      let res = await movieSer.getTheater(params);
-      setDataMovieTab(res.data.content);
+      let res = await fetchApiMovie('getTheater');
+      setDataMovieTab(res);
     } catch (err) {}
   };
   useEffect(() => {
