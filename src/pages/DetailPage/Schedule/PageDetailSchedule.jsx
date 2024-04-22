@@ -96,12 +96,12 @@ export default function PageDetailSchedule(props) {
       });
     } else {
       return (
-        <div className="container text-center text-xl font-semibold mb-3">
+        [<div className="container text-center text-xl font-semibold mb-3">
           <div className="w-1/3 mx-auto">
             <Lottie animationData={cat_comment} />
             Hiện chưa có lịch chiếu cho phim này !!!
           </div>
-        </div>
+        </div>]
       );
     }
   };
