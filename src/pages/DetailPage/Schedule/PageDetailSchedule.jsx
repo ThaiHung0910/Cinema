@@ -5,7 +5,7 @@ import cat_comment from "../../../assets/json/cat_comment.json";
 import PageDetailMap from "./Map/PageDetailMap";
 import PageDetailComment from "./Comment/PageDetailComment";
 
-import  "./pageDetailSchedule.css";
+import "./pageDetailSchedule.css";
 import ButtonBookingTicket from "../../../components/Booking/ButtonBookingTicket";
 
 const { Panel } = Collapse;
@@ -27,7 +27,6 @@ export default function PageDetailSchedule(props) {
       );
     });
   };
-
 
   // RENDER THEATER ============================
   let renderTheater = (cumRapChieu, logo) => {
@@ -95,14 +94,20 @@ export default function PageDetailSchedule(props) {
         };
       });
     } else {
-      return (
-        [<div className="container text-center text-xl font-semibold mb-3">
-          <div className="w-1/3 mx-auto">
-            <Lottie animationData={cat_comment} />
-            Hiện chưa có lịch chiếu cho phim này !!!
-          </div>
-        </div>]
-      );
+      return [
+        {
+          key: "",
+          label: "",
+          children: (
+            <div className="container text-center text-xl font-semibold mb-3">
+              <div className="w-1/3 mx-auto">
+                <Lottie animationData={cat_comment} />
+                Hiện chưa có lịch chiếu cho phim này !!!
+              </div>
+            </div>
+          ),
+        },
+      ];
     }
   };
   return (
@@ -130,29 +135,30 @@ export default function PageDetailSchedule(props) {
             </div>
             {/* // CARD ĐÁNH GIÁ  ==================================== */}
             <div className="xl:w-1/3 md:w-1/3 w-full xl:flex md:flex  flex  justify-center items-center">
-                <div className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border " style={{width: '300px'}}>
-                  <div className="flex items-center justify-center">
-                    <div
-                      className="bubble bubble-bottom-left px-1 py-3 xl:text-xs"
-                    >
-                      Cộng đồng meo meo nghĩ gì?
-                    </div>
-                  </div>
-                  <Lottie
-                    className="xl:w-full md:w-full w-full scale-75"
-                    animationData={cat_comment}
-                  />
-                  <div>
-                    Đánh giá của phim !!!
-                    <Rate disabled allowHalf defaultValue={props.danhGia / 2} />
-                    <p className="xl:mt-2 md:mt-2 mt-2">
-                      {props.danhGia * 10}% người xem hài lòng với phim này
-                    </p>
-                    <div className="xl:py-6 md:py-5 py-4">
-                      <PageDetailComment />
-                    </div>
+              <div
+                className=" font-bold text-center  xl:mt-20 mt-10 py-4 rounded shadow-lg border "
+                style={{ width: "300px" }}
+              >
+                <div className="flex items-center justify-center">
+                  <div className="bubble bubble-bottom-left px-1 py-3 xl:text-xs">
+                    Cộng đồng meo meo nghĩ gì?
                   </div>
                 </div>
+                <Lottie
+                  className="xl:w-full md:w-full w-full scale-75"
+                  animationData={cat_comment}
+                />
+                <div>
+                  Đánh giá của phim !!!
+                  <Rate disabled allowHalf defaultValue={props.danhGia / 2} />
+                  <p className="xl:mt-2 md:mt-2 mt-2">
+                    {props.danhGia * 10}% người xem hài lòng với phim này
+                  </p>
+                  <div className="xl:py-6 md:py-5 py-4">
+                    <PageDetailComment />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
