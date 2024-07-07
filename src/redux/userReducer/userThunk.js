@@ -7,7 +7,7 @@ import { turnOffLoading, turnOnLoading } from "../loadingReducer/loadingSlice";
 
 export const loginThunk = createAsyncThunk(
   "userReducer/loginThunk",
-  async (payload, { rejectWithValue }) => {
+  async (payload, { rejectWithValue, dispatch }) => {
     try {
       dispatch(turnOnLoading());
       const data = await userSer.postLogin(payload.value);
