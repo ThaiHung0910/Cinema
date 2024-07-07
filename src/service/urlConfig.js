@@ -13,8 +13,8 @@ export const MA_NHOM = 'GP09';
 export const TOKEN_CYBER =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCA2NCIsIkhldEhhblN0cmluZyI6IjA4LzA5LzIwNTQiLCJIZXRIYW5UaW1lIjoiMTgyNTc1MzYwMDAwMCIsIm5iZiI6MTY5NTkyMDQwMCwiZXhwIjoxNzI1OTAxMjAwfQ.XLHg-hNTodOsN6aJbzkEOhntH6Bq2GMv2BTVxwDfqCA';
 
-  
-  export const configHeader = () => {
+
+export const configHeader = () => {
   const accessToken = userLocal.get()?.accessToken;
   // console.log(`Bearer ${accessToken}`)
   return {
@@ -33,7 +33,7 @@ export const http = axios.create({
 // Add a request interceptor
 http.interceptors.request.use(
   function (config) {
-     // Do something before request is sent
+    // Do something before request is sent
     let newConfig = {
       ...config,
       headers: {
@@ -42,9 +42,9 @@ http.interceptors.request.use(
       },
     };
 
-    
+
     // Bật loading khi bắt đầu gửi request
-    store.dispatch(turnOnLoading());
+    // store.dispatch(turnOnLoading());
     return newConfig;
   },
   function (error) {
@@ -58,9 +58,9 @@ http.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    setTimeout(() => {
-      store.dispatch(turnOffLoading());
-    }, 2000);
+    // setTimeout(() => {
+    //   store.dispatch(turnOffLoading());
+    // }, 2000);
 
     // tắt loading khi nhận response
     return response;
@@ -69,9 +69,9 @@ http.interceptors.response.use(
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     // tắt loading khi nhận reject
-    setTimeout(() => {
-      store.dispatch(turnOffLoading());
-    }, 2000);
+    // setTimeout(() => {
+    //   store.dispatch(turnOffLoading());
+    // }, 2000);
 
     return Promise.reject(error);
   },

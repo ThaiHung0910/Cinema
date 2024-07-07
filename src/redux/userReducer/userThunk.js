@@ -2,18 +2,23 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { message } from "antd";
 import { userSer } from "../../service/userSer";
 import { userLocal } from "../../service/localService";
+import { turnOffLoading, turnOnLoading } from "../loadingReducer/loadingSlice";
+
 
 export const loginThunk = createAsyncThunk(
   "userReducer/loginThunk",
   async (payload, { rejectWithValue }) => {
     try {
+      dispatch(turnOnLoading());
       const data = await userSer.postLogin(payload.value);
       let infoUser = data.data.content;
       payload.navigateCus();
       userLocal.set(infoUser);
       message.success("Đăng nhập thành công");
+      dispatch(turnOffLoading());
       return infoUser;
     } catch (error) {
+      dispatch(turnOffLoading());
       message.error("Tài khoản hoặc mật khẩu không đúng");
       return rejectWithValue(error);
     }
@@ -28,7 +33,7 @@ export const registerThunk = createAsyncThunk(
       let infoUser = data.data.content;
       payload.navigateCustom();
       message.success("Đăng ký thành công");
-      
+
       return infoUser;
     } catch (err) {
       message.error("Đăng ký thất bại");
@@ -43,7 +48,7 @@ export const updateThunk = createAsyncThunk(
     try {
       const data = await userSer.putUpdateInfo(payload);
       let infoUser = data.data.content;
-      
+
       console.log(infoUser)
       message.success("Cập nhật thành công");
       let updateInfo = await userSer.postLogin({
